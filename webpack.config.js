@@ -133,15 +133,15 @@ var addAssetTags = [
       src:(function(){
         //本地调试
         if(dev_environment ){
-          return  `./vendor.js`
+          return  `//uat.yuantutech.com/yuantu/doctor-h5-cli/1.0.1/vendor.js`
         }
         //uat daily发布
         if(daily_environment){
-          return  `./vendor.js`
+          return  `//uat.yuantutech.com/yuantu/doctor-h5-cli/1.0.1/vendor.js`
         }
         //线上发布
         if(dist_environment){
-          return  `./vendor.js`
+          return  `//uat.yuantutech.com/yuantu/doctor-h5-cli/1.0.1/vendor.js`
         }
       })()
     }

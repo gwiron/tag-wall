@@ -3,6 +3,7 @@ import {render} from 'react-dom'
 import "./all.less"
 
 import Index from './index'
+import Test from './test'
 
 class App extends React.Component {
   constructor(props) {
@@ -42,5 +43,6 @@ function register(pathname, page) {
 
 
 register('/index.html', Index);
+register('/test.html', Test);
 
 render(<App />, document.getElementById("root"));

@@ -2,7 +2,7 @@
  * @Author: saohui 
  * @Date: 2017-10-17 11:24:06 
  * @Last Modified by: saohui
- * @Last Modified time: 2017-10-17 14:49:30
+ * @Last Modified time: 2017-10-17 14:51:16
  */
 
 import React from 'react'
@@ -42,6 +42,7 @@ export default class ShowEvaluate extends React.Component {
       .mock('http://rap.yuantutech.com/mockjsdata/25/restapi/ytDoct/getEvaluate')
       .start()
   }
+  
   onComplete ( result, { onFinished }) {
     // console.log( result )
     const { tagData, evaluateData } = result.data

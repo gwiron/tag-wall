@@ -2,7 +2,7 @@
  * @Author: saohui 
  * @Date: 2017-10-17 11:24:06 
  * @Last Modified by: saohui
- * @Last Modified time: 2017-10-17 14:26:21
+ * @Last Modified time: 2017-10-17 14:49:30
  */
 
 import React from 'react'
@@ -10,6 +10,7 @@ import util from '../lib/util'
 import DataCenter from '../module/DataCenter'
 import PullUpRefresh from '../component/PullUpRefresh'
 import './my-evaluate.less'
+import LoadingOb from '../lib/LoadingOb'
 
 import EvaluateItem from '../component/showEvaluate/EvaluateItem'
 import TagList from '../component/showEvaluate/TagList'
@@ -42,7 +43,7 @@ export default class ShowEvaluate extends React.Component {
       .start()
   }
   onComplete ( result, { onFinished }) {
-    console.log( result )
+    // console.log( result )
     const { tagData, evaluateData } = result.data
     const { evaluateList } = this.state
     , resultEvaluateList = evaluateList.concat( evaluateData.evaluateList )

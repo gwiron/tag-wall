@@ -1,11 +1,14 @@
 
 import JSONP from '../lib/JSONP';
 import PromiseAsync from 'promise-to-async-events'
+import util from '../lib/util'
 
 var API_DOMAIN = "https://route.uat.yuantutech.com";
 
+let uid = util.query().unionId
+
 function getAPIUri( path ){
-  return API_DOMAIN.indexOf("http") == 0 ? API_DOMAIN+path : PROTOCOL+API_DOMAIN+path;
+  return path.indexOf("http") == 0 ? path : API_DOMAIN+path
 }
 
 function ajax(url, data){
@@ -27,6 +30,11 @@ function ajax(url, data){
     });
 }
 
+PromiseAsync.prototype.mock = function ( url ) {
+  this.promise = ajax( url, {})
+  return this
+}
+
 
 export default {
     getAppIndexNew(unionId) {//获取首页信息
@@ -38,4 +46,14 @@ export default {
         }
         return new PromiseAsync( ajax("/user-web/restapi/common/platform/appIndexNew", obj ) );
     }
+
+    ,getMyEvaluate ( corpId, currentPage, pageSize = 20, unionId = uid ) {
+  
+      return new PromiseAsync( ajax('/user-web/restapi/ytDoct/getEvaluate', { 
+        corpId
+        ,currentPage
+        ,pageSize
+        ,unionId
+      }))
+    },
 };

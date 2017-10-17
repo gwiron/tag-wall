@@ -2,8 +2,11 @@ import React from 'react'
 import {render} from 'react-dom'
 import "./all.less"
 
+import Alert from '../component/alert'
+
 import Index from './index'
 import Test from './test'
+import MyEvaluate from './my-evaluate'
 
 class App extends React.Component {
   constructor(props) {
@@ -23,6 +26,7 @@ class App extends React.Component {
      * **/
     if (Page) {
       return <div>
+        <Alert />
         <Page />
       </div>
     } else {
@@ -44,5 +48,7 @@ function register(pathname, page) {
 
 register('/index.html', Index);
 register('/test.html', Test);
+
+register('/my-evaluate.html', MyEvaluate )
 
 render(<App />, document.getElementById("root"));

@@ -7,7 +7,6 @@ import { BlockLoading } from '../component/loading'
 
 import Index from './index'
 import Test from './test'
-import MyEvaluate from './my-evaluate'
 
 class App extends React.Component {
   constructor(props) {
@@ -50,7 +49,5 @@ function register(pathname, page) {
 
 register('/index.html', Index);
 register('/test.html', Test);
-
-register('/my-evaluate.html', MyEvaluate )
 
 render(<App />, document.getElementById("root"));

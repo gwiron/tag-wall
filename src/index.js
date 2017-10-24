@@ -2,15 +2,18 @@
 import React from 'react'
 import DataCenter from '../module/DataCenter'
 import TagWall from '../component/tagWall'
+import { BlockLoading } from '../component/loading'
 
-export default class App extends React.Component{
+export default class App extends React.Component {
 	constructor(props){
 		super(props)
 	}
   async componentDidMount () {
-		let tag = new TagWall( this.refs['tag-wall'] )
+		BlockLoading.show('正在生成专属 AI 宝宝...')
+		let tag = new TagWall( this.refs['tag-wall'], 750, 890 )
 
-		await tag.initLogo('//front-images.oss-cn-hangzhou.aliyuncs.com/i4/90e5757435f5c21c4cfc9d3483b7132a-174-174.png')
+		await tag.initLogo('../component/tagWall/111.jpeg')
+		await tag.initQR('../component/tagWall/qr.png')
 
 		tag.addTag('灵魂出窍的神技')
 		tag.addTag('各种神逻辑')
@@ -24,10 +27,16 @@ export default class App extends React.Component{
 		tag.addTag('易烊千玺就是射手座')
 		tag.addTag('乐观主义者')
 
-		tag.render()
+		tag.initBabyName('李小萌')
+		tag.render( this.refs['tag-body'])
+
+
+		BlockLoading.hide()
 	}
 
 	render(){
-		return <canvas ref='tag-wall'></canvas>
+		return <div ref="tag-body" className="tag-body">
+			<canvas ref='tag-wall'></canvas>
+		</div>
 	}
 }

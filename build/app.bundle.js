@@ -23874,7 +23874,7 @@
 	 * @Author: saohui 
 	 * @Date: 2017-10-24 19:24:32 
 	 * @Last Modified by: saohui
-	 * @Last Modified time: 2017-10-24 19:30:01
+	 * @Last Modified time: 2017-10-24 19:35:47
 	 */
 	var App = function (_React$Component) {
 		(0, _inherits3.default)(App, _React$Component);
@@ -23895,15 +23895,12 @@
 								case 0:
 									_loading.BlockLoading.show('正在生成专属 AI 宝宝...');
 									tag = new _tagWall2.default(this.refs['tag-wall'], 750, 890);
-
-									// await tag.initLogo('http://image.yuantutech.com/user/7b6fa819951ada163d0fff818af7e6fc-84-84.png')
-
 									_context.next = 4;
-									return tag.initLogo('../component/tagWall/111.jpg');
+									return tag.initLogo('http://image.yuantutech.com/user/7b6fa819951ada163d0fff818af7e6fc-84-84.png');
 
 								case 4:
 									_context.next = 6;
-									return tag.initQR('../component/tagWall/qr.png');
+									return tag.initQR('http://image.yuantutech.com/user/7b6fa819951ada163d0fff818af7e6fc-84-84.png');
 
 								case 6:
 

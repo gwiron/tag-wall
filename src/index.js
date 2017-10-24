@@ -1,10 +1,9 @@
 /*
  * @Author: saohui 
  * @Date: 2017-10-24 19:24:32 
- * @Last Modified by:   saohui 
- * @Last Modified time: 2017-10-24 19:24:32 
+ * @Last Modified by: saohui
+ * @Last Modified time: 2017-10-24 19:26:12
  */
-
 import React from 'react'
 import DataCenter from '../module/DataCenter'
 import TagWall from '../component/tagWall'

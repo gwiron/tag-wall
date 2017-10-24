@@ -23873,10 +23873,9 @@
 	/*
 	 * @Author: saohui 
 	 * @Date: 2017-10-24 19:24:32 
-	 * @Last Modified by:   saohui 
-	 * @Last Modified time: 2017-10-24 19:24:32 
+	 * @Last Modified by: saohui
+	 * @Last Modified time: 2017-10-24 19:26:12
 	 */
-
 	var App = function (_React$Component) {
 		(0, _inherits3.default)(App, _React$Component);
 

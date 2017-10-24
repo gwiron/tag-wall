@@ -23874,7 +23874,7 @@
 	 * @Author: saohui 
 	 * @Date: 2017-10-24 19:24:32 
 	 * @Last Modified by: saohui
-	 * @Last Modified time: 2017-10-24 19:26:12
+	 * @Last Modified time: 2017-10-24 19:30:01
 	 */
 	var App = function (_React$Component) {
 		(0, _inherits3.default)(App, _React$Component);
@@ -23895,8 +23895,11 @@
 								case 0:
 									_loading.BlockLoading.show('正在生成专属 AI 宝宝...');
 									tag = new _tagWall2.default(this.refs['tag-wall'], 750, 890);
+
+									// await tag.initLogo('http://image.yuantutech.com/user/7b6fa819951ada163d0fff818af7e6fc-84-84.png')
+
 									_context.next = 4;
-									return tag.initLogo('http://image.yuantutech.com/user/7b6fa819951ada163d0fff818af7e6fc-84-84.png');
+									return tag.initLogo('../component/tagWall/111.jpg');
 
 								case 4:
 									_context.next = 6;
@@ -27990,7 +27993,7 @@
 	 * @Author: saohui 
 	 * @Date: 2017-10-23 11:02:57 
 	 * @Last Modified by: saohui
-	 * @Last Modified time: 2017-10-24 18:55:28
+	 * @Last Modified time: 2017-10-24 19:29:51
 	 */
 
 	var WINDOW_WIDTH = window.innerWidth,
@@ -28342,7 +28345,7 @@
 	        resolve(beauty);
 	      };
 	      beauty.onerror = function () {
-	        reject({ success: false, msg: '加载logo失败，请刷新重试' });
+	        reject({ success: false, msg: '加载图片失败，请刷新重试' });
 	      };
 	    }
 	  });

@@ -2,7 +2,7 @@
  * @Author: saohui 
  * @Date: 2017-10-23 11:02:57 
  * @Last Modified by: saohui
- * @Last Modified time: 2017-10-24 18:55:28
+ * @Last Modified time: 2017-10-24 19:29:51
  */
 
 import Alert from '../alert'
@@ -279,7 +279,7 @@ function loadImg ( url ) {
         resolve( beauty )
       }
       beauty.onerror = function(){
-        reject({ success: false, msg: '加载logo失败，请刷新重试'})
+        reject({ success: false, msg: '加载图片失败，请刷新重试'})
       }
    }
   })

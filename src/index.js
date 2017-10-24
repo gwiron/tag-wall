@@ -12,7 +12,8 @@ export default class App extends React.Component {
 		BlockLoading.show('正在生成专属 AI 宝宝...')
 		let tag = new TagWall( this.refs['tag-wall'], 750, 890 )
 
-		await tag.initLogo('../component/tagWall/111.jpeg')
+		await tag.initLogo('http://image.yuantutech.com/user/7b6fa819951ada163d0fff818af7e6fc-84-84.png')
+		// await tag.initLogo('../component/tagWall/111.jpg')
 		await tag.initQR('../component/tagWall/qr.png')
 
 		tag.addTag('灵魂出窍的神技')

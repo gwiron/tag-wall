@@ -2,7 +2,7 @@
  * @Author: saohui 
  * @Date: 2017-10-23 11:02:57 
  * @Last Modified by: saohui
- * @Last Modified time: 2017-10-24 16:25:20
+ * @Last Modified time: 2017-10-24 18:55:28
  */
 
 import Alert from '../alert'
@@ -76,7 +76,6 @@ export default class TagWall {
         ,left: Math.floor( this.wrapperWidth + ( this.footerHeight - width ) / 2 - this.footerHeight - 4 )
         ,top: Math.floor( this.wrapperHerght + ( this.footerHeight - width ) / 2 - this.footerHeight )
       }
-      console.log( this.QRImg)
     } catch (e) {
       if ( e.success === false ) {
         Alert.show( e.msg, 1000 )
@@ -254,16 +253,22 @@ export default class TagWall {
     this.renderTags( ctx )
     
     this.renderName( ctx )
-
-    var beauty = new Image()
-    beauty.src = this.tagCanvas.toDataURL()
-    body.appendChild( beauty )
+    
+    try {
+      var beauty = new Image()
+      beauty.src = this.tagCanvas.toDataURL()
+      body.appendChild( beauty )
+    } catch (e) {
+      console.error( e )
+      // body.innerHTML = ( JSON.stringify( e ))
+    }
   }
 }
 
 function loadImg ( url ) {
   var beauty = new Image()
   beauty.src = url
+  beauty.crossOrigin="Anonymous"
   
   return new Promise( function ( resolve, reject ) {
     

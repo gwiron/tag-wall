@@ -26,8 +26,8 @@ var dist_cdn_domain = "s.yuantutech.com"
 
 var cnd_domain = daily_environment || dev_environment ? daily_cdn_domain : dist_cdn_domain;
 //cdn
-var daily_publicPath = "//daily.yuantutech.com/yuantu/h5-cli/"+version+"/";
-var dist_publicPath = "//s.yuantutech.com/yuantu/h5-cli/"+version+"/";
+var daily_publicPath = "//daily.yuantutech.com/yuantu/omp-h5-cli/"+version+"/";
+var dist_publicPath = "//s.yuantutech.com/yuantu/omp-h5-cli/"+version+"/";
 
 
 //本地开发环境通常不需要配置

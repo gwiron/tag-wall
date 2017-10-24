@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "//daily.yuantutech.com/yuantu/h5-cli/1.0.1/";
+/******/ 	__webpack_require__.p = "//daily.yuantutech.com/yuantu/omp-h5-cli/1.0.1/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);

@@ -2,7 +2,7 @@
  * @Author: saohui 
  * @Date: 2017-10-24 19:24:32 
  * @Last Modified by: saohui
- * @Last Modified time: 2017-10-24 19:35:47
+ * @Last Modified time: 2017-10-24 19:38:27
  */
 import React from 'react'
 import DataCenter from '../module/DataCenter'
@@ -17,10 +17,12 @@ export default class App extends React.Component {
 		BlockLoading.show('正在生成专属 AI 宝宝...')
 		let tag = new TagWall( this.refs['tag-wall'], 750, 890 )
 
-		await tag.initLogo('http://image.yuantutech.com/user/7b6fa819951ada163d0fff818af7e6fc-84-84.png')
+		// await tag.initLogo('http://image.yuantutech.com/user/7b6fa819951ada163d0fff818af7e6fc-84-84.png')
+		// await tag.initQR('http://image.yuantutech.com/user/7b6fa819951ada163d0fff818af7e6fc-84-84.png')
 		// await tag.initLogo('../component/tagWall/111.jpg')
 		// await tag.initQR('../component/tagWall/qr.png')
-		await tag.initQR('http://image.yuantutech.com/user/7b6fa819951ada163d0fff818af7e6fc-84-84.png')
+		await tag.initLogo('http://uat.yuantutech.com/yuantu/omp-h5-cli/1.0.1/111.jpg')
+		await tag.initQR('http://uat.yuantutech.com/yuantu/omp-h5-cli/1.0.1/qr.png')
 
 		tag.addTag('灵魂出窍的神技')
 		tag.addTag('各种神逻辑')

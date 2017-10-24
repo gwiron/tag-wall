@@ -85,17 +85,15 @@
 
 	var _alert2 = _interopRequireDefault(_alert);
 
-	var _index = __webpack_require__(274);
+	var _loading = __webpack_require__(274);
+
+	var _index = __webpack_require__(276);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _test = __webpack_require__(313);
+	var _test = __webpack_require__(321);
 
 	var _test2 = _interopRequireDefault(_test);
-
-	var _myEvaluate = __webpack_require__(314);
-
-	var _myEvaluate2 = _interopRequireDefault(_myEvaluate);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -127,6 +125,7 @@
 	        return _react2.default.createElement(
 	          'div',
 	          null,
+	          _react2.default.createElement(_loading.BlockLoading, null),
 	          _react2.default.createElement(_alert2.default, null),
 	          _react2.default.createElement(Page, null)
 	        );
@@ -154,8 +153,6 @@
 
 	register('/index.html', _index2.default);
 	register('/test.html', _test2.default);
-
-	register('/my-evaluate.html', _myEvaluate2.default);
 
 	(0, _reactDom.render)(_react2.default.createElement(App, null), document.getElementById("root"));
 
@@ -23700,8 +23697,30 @@
 
 	'use strict';
 
+	var _BlockLoading = __webpack_require__(275);
+
+	var _BlockLoading2 = _interopRequireDefault(_BlockLoading);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	module.exports = {
+	  //阻断性加载
+	  BlockLoading: _BlockLoading2.default
+	}; /*
+	    * @Author: saohui 
+	    * @Date: 2017-10-17 14:48:15 
+	    * @Last Modified by:   saohui 
+	    * @Last Modified time: 2017-10-17 14:48:15 
+	    */
+
+/***/ }),
+/* 275 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 
 	var _getPrototypeOf = __webpack_require__(2);
@@ -23728,36 +23747,202 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(123);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var _DataCenter = __webpack_require__(275);
+	var loadingExample = null;
+
+	var BlockLoading = function (_React$Component) {
+	  (0, _inherits3.default)(BlockLoading, _React$Component);
+
+	  function BlockLoading(props) {
+	    (0, _classCallCheck3.default)(this, BlockLoading);
+
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (BlockLoading.__proto__ || (0, _getPrototypeOf2.default)(BlockLoading)).call(this, props));
+
+	    _this.state = {
+	      display: false,
+	      text: "加载中..."
+	    };
+
+	    loadingExample = _this;
+	    return _this;
+	  }
+
+	  (0, _createClass3.default)(BlockLoading, [{
+	    key: "show",
+	    value: function show(text) {
+	      this.setState({
+	        display: true,
+	        text: text
+	      });
+	    }
+	  }, {
+	    key: "hide",
+	    value: function hide() {
+	      this.setState({
+	        display: false
+	      });
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      return this.state.display ? _react2.default.createElement(
+	        "div",
+	        { className: "loading-mask " },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "loading-wrapper" },
+	          _react2.default.createElement("div", { className: "loading-icon loading" }),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "loading-msg" },
+	            this.state.text || "加载中..."
+	          )
+	        )
+	      ) : null;
+	    }
+	  }]);
+	  return BlockLoading;
+	}(_react2.default.Component);
+	//显示
+
+
+	exports.default = BlockLoading;
+	BlockLoading.show = function (text) {
+	  loadingExample && loadingExample.show(text);
+	};
+	//隐藏
+	BlockLoading.hide = function () {
+	  loadingExample && loadingExample.hide();
+	};
+
+/***/ }),
+/* 276 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _regenerator = __webpack_require__(277);
+
+	var _regenerator2 = _interopRequireDefault(_regenerator);
+
+	var _asyncToGenerator2 = __webpack_require__(280);
+
+	var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+	var _getPrototypeOf = __webpack_require__(2);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(28);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(29);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(33);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(79);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _react = __webpack_require__(87);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _DataCenter = __webpack_require__(302);
 
 	var _DataCenter2 = _interopRequireDefault(_DataCenter);
 
+	var _tagWall = __webpack_require__(319);
+
+	var _tagWall2 = _interopRequireDefault(_tagWall);
+
+	var _loading = __webpack_require__(274);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/*
+	 * @Author: saohui 
+	 * @Date: 2017-10-24 19:24:32 
+	 * @Last Modified by:   saohui 
+	 * @Last Modified time: 2017-10-24 19:24:32 
+	 */
 
 	var App = function (_React$Component) {
 		(0, _inherits3.default)(App, _React$Component);
 
 		function App(props) {
 			(0, _classCallCheck3.default)(this, App);
-
-			var _this = (0, _possibleConstructorReturn3.default)(this, (App.__proto__ || (0, _getPrototypeOf2.default)(App)).call(this, props));
-
-			_DataCenter2.default.getAppIndexNew(60).subscribe(function (data) {
-				console.log(data);
-			}).start();
-
-			return _this;
+			return (0, _possibleConstructorReturn3.default)(this, (App.__proto__ || (0, _getPrototypeOf2.default)(App)).call(this, props));
 		}
 
 		(0, _createClass3.default)(App, [{
+			key: 'componentDidMount',
+			value: function () {
+				var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+					var tag;
+					return _regenerator2.default.wrap(function _callee$(_context) {
+						while (1) {
+							switch (_context.prev = _context.next) {
+								case 0:
+									_loading.BlockLoading.show('正在生成专属 AI 宝宝...');
+									tag = new _tagWall2.default(this.refs['tag-wall'], 750, 890);
+									_context.next = 4;
+									return tag.initLogo('http://image.yuantutech.com/user/7b6fa819951ada163d0fff818af7e6fc-84-84.png');
+
+								case 4:
+									_context.next = 6;
+									return tag.initQR('../component/tagWall/qr.png');
+
+								case 6:
+
+									tag.addTag('灵魂出窍的神技');
+									tag.addTag('各种神逻辑');
+									tag.addTag('很会忽悠人');
+									tag.addTag('超积极');
+									tag.addTag('玻璃心');
+									tag.addTag('热爱学习');
+									tag.addTag('射手宝宝');
+									tag.addTag('适合创作类工作');
+									tag.addTag('更喜欢妈妈');
+									tag.addTag('易烊千玺就是射手座');
+									tag.addTag('乐观主义者');
+
+									tag.initBabyName('李小萌');
+									tag.render(this.refs['tag-body']);
+
+									_loading.BlockLoading.hide();
+
+								case 20:
+								case 'end':
+									return _context.stop();
+							}
+						}
+					}, _callee, this);
+				}));
+
+				function componentDidMount() {
+					return _ref.apply(this, arguments);
+				}
+
+				return componentDidMount;
+			}()
+		}, {
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					null,
-					' Hello main.js '
+					{ ref: 'tag-body', className: 'tag-body' },
+					_react2.default.createElement('canvas', { ref: 'tag-wall' })
 				);
 			}
 		}]);
@@ -23767,128 +23952,864 @@
 	exports.default = App;
 
 /***/ }),
-/* 275 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _promise = __webpack_require__(276);
-
-	var _promise2 = _interopRequireDefault(_promise);
-
-	var _JSONP = __webpack_require__(297);
-
-	var _JSONP2 = _interopRequireDefault(_JSONP);
-
-	var _promiseToAsyncEvents = __webpack_require__(298);
-
-	var _promiseToAsyncEvents2 = _interopRequireDefault(_promiseToAsyncEvents);
-
-	var _util = __webpack_require__(300);
-
-	var _util2 = _interopRequireDefault(_util);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var API_DOMAIN = "https://route.uat.yuantutech.com";
-
-	var uid = _util2.default.query().unionId;
-
-	function getAPIUri(path) {
-	  return path.indexOf("http") == 0 ? path : API_DOMAIN + path;
-	}
-
-	function ajax(url, data) {
-	  url = getAPIUri(url);
-	  data = data || {};
-	  return new _promise2.default(function (reslove, reject) {
-	    var param = {};
-
-	    for (var key in data) {
-	      if (data[key] !== "" && data[key] !== "undefined" && data[key] !== undefined && data[key] !== null) {
-	        param[key] = data[key];
-	      }
-	    }
-
-	    (0, _JSONP2.default)(url, param, reslove, function () {
-	      reject({ msg: "请求错误" });
-	    });
-	  });
-	}
-
-	_promiseToAsyncEvents2.default.prototype.mock = function (url) {
-	  this.promise = ajax(url, {});
-	  return this;
-	};
-
-	exports.default = {
-	  getAppIndexNew: function getAppIndexNew(unionId) {
-	    //获取首页信息
-	    var obj = {
-	      unionId: unionId,
-	      invokerChannel: "H5",
-	      invokerDeviceType: "others",
-	      invokerAppVersion: "1.9.23"
-	    };
-	    return new _promiseToAsyncEvents2.default(ajax("/user-web/restapi/common/platform/appIndexNew", obj));
-	  },
-	  getMyEvaluate: function getMyEvaluate(corpId, currentPage) {
-	    var pageSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 20;
-	    var unionId = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : uid;
-
-
-	    return new _promiseToAsyncEvents2.default(ajax('/user-web/restapi/ytDoct/getEvaluate', {
-	      corpId: corpId,
-	      currentPage: currentPage,
-	      pageSize: pageSize,
-	      unionId: unionId
-	    }));
-	  }
-	};
-
-/***/ }),
-/* 276 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(277), __esModule: true };
-
-/***/ }),
 /* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(76);
-	__webpack_require__(37);
-	__webpack_require__(59);
-	__webpack_require__(278);
-	__webpack_require__(295);
-	__webpack_require__(296);
-	module.exports = __webpack_require__(15).Promise;
+	module.exports = __webpack_require__(278);
 
 
 /***/ }),
 /* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	// This method of obtaining a reference to the global object needs to be
+	// kept identical to the way it is obtained in runtime.js
+	var g = (function() { return this })() || Function("return this")();
+
+	// Use `getOwnPropertyNames` because not all browsers support calling
+	// `hasOwnProperty` on the global `self` object in a worker. See #183.
+	var hadRuntime = g.regeneratorRuntime &&
+	  Object.getOwnPropertyNames(g).indexOf("regeneratorRuntime") >= 0;
+
+	// Save the old regeneratorRuntime in case it needs to be restored later.
+	var oldRuntime = hadRuntime && g.regeneratorRuntime;
+
+	// Force reevalutation of runtime.js.
+	g.regeneratorRuntime = undefined;
+
+	module.exports = __webpack_require__(279);
+
+	if (hadRuntime) {
+	  // Restore the original runtime.
+	  g.regeneratorRuntime = oldRuntime;
+	} else {
+	  // Remove the global property added by runtime.js.
+	  try {
+	    delete g.regeneratorRuntime;
+	  } catch(e) {
+	    g.regeneratorRuntime = undefined;
+	  }
+	}
+
+
+/***/ }),
+/* 279 */
+/***/ (function(module, exports) {
+
+	/**
+	 * Copyright (c) 2014, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * https://raw.github.com/facebook/regenerator/master/LICENSE file. An
+	 * additional grant of patent rights can be found in the PATENTS file in
+	 * the same directory.
+	 */
+
+	!(function(global) {
+	  "use strict";
+
+	  var Op = Object.prototype;
+	  var hasOwn = Op.hasOwnProperty;
+	  var undefined; // More compressible than void 0.
+	  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+	  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+	  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+	  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+	  var inModule = typeof module === "object";
+	  var runtime = global.regeneratorRuntime;
+	  if (runtime) {
+	    if (inModule) {
+	      // If regeneratorRuntime is defined globally and we're in a module,
+	      // make the exports object identical to regeneratorRuntime.
+	      module.exports = runtime;
+	    }
+	    // Don't bother evaluating the rest of this file if the runtime was
+	    // already defined globally.
+	    return;
+	  }
+
+	  // Define the runtime globally (as expected by generated code) as either
+	  // module.exports (if we're in a module) or a new, empty object.
+	  runtime = global.regeneratorRuntime = inModule ? module.exports : {};
+
+	  function wrap(innerFn, outerFn, self, tryLocsList) {
+	    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+	    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+	    var generator = Object.create(protoGenerator.prototype);
+	    var context = new Context(tryLocsList || []);
+
+	    // The ._invoke method unifies the implementations of the .next,
+	    // .throw, and .return methods.
+	    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+	    return generator;
+	  }
+	  runtime.wrap = wrap;
+
+	  // Try/catch helper to minimize deoptimizations. Returns a completion
+	  // record like context.tryEntries[i].completion. This interface could
+	  // have been (and was previously) designed to take a closure to be
+	  // invoked without arguments, but in all the cases we care about we
+	  // already have an existing method we want to call, so there's no need
+	  // to create a new function object. We can even get away with assuming
+	  // the method takes exactly one argument, since that happens to be true
+	  // in every case, so we don't have to touch the arguments object. The
+	  // only additional allocation required is the completion record, which
+	  // has a stable shape and so hopefully should be cheap to allocate.
+	  function tryCatch(fn, obj, arg) {
+	    try {
+	      return { type: "normal", arg: fn.call(obj, arg) };
+	    } catch (err) {
+	      return { type: "throw", arg: err };
+	    }
+	  }
+
+	  var GenStateSuspendedStart = "suspendedStart";
+	  var GenStateSuspendedYield = "suspendedYield";
+	  var GenStateExecuting = "executing";
+	  var GenStateCompleted = "completed";
+
+	  // Returning this object from the innerFn has the same effect as
+	  // breaking out of the dispatch switch statement.
+	  var ContinueSentinel = {};
+
+	  // Dummy constructor functions that we use as the .constructor and
+	  // .constructor.prototype properties for functions that return Generator
+	  // objects. For full spec compliance, you may wish to configure your
+	  // minifier not to mangle the names of these two functions.
+	  function Generator() {}
+	  function GeneratorFunction() {}
+	  function GeneratorFunctionPrototype() {}
+
+	  // This is a polyfill for %IteratorPrototype% for environments that
+	  // don't natively support it.
+	  var IteratorPrototype = {};
+	  IteratorPrototype[iteratorSymbol] = function () {
+	    return this;
+	  };
+
+	  var getProto = Object.getPrototypeOf;
+	  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+	  if (NativeIteratorPrototype &&
+	      NativeIteratorPrototype !== Op &&
+	      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+	    // This environment has a native %IteratorPrototype%; use it instead
+	    // of the polyfill.
+	    IteratorPrototype = NativeIteratorPrototype;
+	  }
+
+	  var Gp = GeneratorFunctionPrototype.prototype =
+	    Generator.prototype = Object.create(IteratorPrototype);
+	  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+	  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+	  GeneratorFunctionPrototype[toStringTagSymbol] =
+	    GeneratorFunction.displayName = "GeneratorFunction";
+
+	  // Helper for defining the .next, .throw, and .return methods of the
+	  // Iterator interface in terms of a single ._invoke method.
+	  function defineIteratorMethods(prototype) {
+	    ["next", "throw", "return"].forEach(function(method) {
+	      prototype[method] = function(arg) {
+	        return this._invoke(method, arg);
+	      };
+	    });
+	  }
+
+	  runtime.isGeneratorFunction = function(genFun) {
+	    var ctor = typeof genFun === "function" && genFun.constructor;
+	    return ctor
+	      ? ctor === GeneratorFunction ||
+	        // For the native GeneratorFunction constructor, the best we can
+	        // do is to check its .name property.
+	        (ctor.displayName || ctor.name) === "GeneratorFunction"
+	      : false;
+	  };
+
+	  runtime.mark = function(genFun) {
+	    if (Object.setPrototypeOf) {
+	      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+	    } else {
+	      genFun.__proto__ = GeneratorFunctionPrototype;
+	      if (!(toStringTagSymbol in genFun)) {
+	        genFun[toStringTagSymbol] = "GeneratorFunction";
+	      }
+	    }
+	    genFun.prototype = Object.create(Gp);
+	    return genFun;
+	  };
+
+	  // Within the body of any async function, `await x` is transformed to
+	  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+	  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+	  // meant to be awaited.
+	  runtime.awrap = function(arg) {
+	    return { __await: arg };
+	  };
+
+	  function AsyncIterator(generator) {
+	    function invoke(method, arg, resolve, reject) {
+	      var record = tryCatch(generator[method], generator, arg);
+	      if (record.type === "throw") {
+	        reject(record.arg);
+	      } else {
+	        var result = record.arg;
+	        var value = result.value;
+	        if (value &&
+	            typeof value === "object" &&
+	            hasOwn.call(value, "__await")) {
+	          return Promise.resolve(value.__await).then(function(value) {
+	            invoke("next", value, resolve, reject);
+	          }, function(err) {
+	            invoke("throw", err, resolve, reject);
+	          });
+	        }
+
+	        return Promise.resolve(value).then(function(unwrapped) {
+	          // When a yielded Promise is resolved, its final value becomes
+	          // the .value of the Promise<{value,done}> result for the
+	          // current iteration. If the Promise is rejected, however, the
+	          // result for this iteration will be rejected with the same
+	          // reason. Note that rejections of yielded Promises are not
+	          // thrown back into the generator function, as is the case
+	          // when an awaited Promise is rejected. This difference in
+	          // behavior between yield and await is important, because it
+	          // allows the consumer to decide what to do with the yielded
+	          // rejection (swallow it and continue, manually .throw it back
+	          // into the generator, abandon iteration, whatever). With
+	          // await, by contrast, there is no opportunity to examine the
+	          // rejection reason outside the generator function, so the
+	          // only option is to throw it from the await expression, and
+	          // let the generator function handle the exception.
+	          result.value = unwrapped;
+	          resolve(result);
+	        }, reject);
+	      }
+	    }
+
+	    var previousPromise;
+
+	    function enqueue(method, arg) {
+	      function callInvokeWithMethodAndArg() {
+	        return new Promise(function(resolve, reject) {
+	          invoke(method, arg, resolve, reject);
+	        });
+	      }
+
+	      return previousPromise =
+	        // If enqueue has been called before, then we want to wait until
+	        // all previous Promises have been resolved before calling invoke,
+	        // so that results are always delivered in the correct order. If
+	        // enqueue has not been called before, then it is important to
+	        // call invoke immediately, without waiting on a callback to fire,
+	        // so that the async generator function has the opportunity to do
+	        // any necessary setup in a predictable way. This predictability
+	        // is why the Promise constructor synchronously invokes its
+	        // executor callback, and why async functions synchronously
+	        // execute code before the first await. Since we implement simple
+	        // async functions in terms of async generators, it is especially
+	        // important to get this right, even though it requires care.
+	        previousPromise ? previousPromise.then(
+	          callInvokeWithMethodAndArg,
+	          // Avoid propagating failures to Promises returned by later
+	          // invocations of the iterator.
+	          callInvokeWithMethodAndArg
+	        ) : callInvokeWithMethodAndArg();
+	    }
+
+	    // Define the unified helper method that is used to implement .next,
+	    // .throw, and .return (see defineIteratorMethods).
+	    this._invoke = enqueue;
+	  }
+
+	  defineIteratorMethods(AsyncIterator.prototype);
+	  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+	    return this;
+	  };
+	  runtime.AsyncIterator = AsyncIterator;
+
+	  // Note that simple async functions are implemented on top of
+	  // AsyncIterator objects; they just return a Promise for the value of
+	  // the final result produced by the iterator.
+	  runtime.async = function(innerFn, outerFn, self, tryLocsList) {
+	    var iter = new AsyncIterator(
+	      wrap(innerFn, outerFn, self, tryLocsList)
+	    );
+
+	    return runtime.isGeneratorFunction(outerFn)
+	      ? iter // If outerFn is a generator, return the full iterator.
+	      : iter.next().then(function(result) {
+	          return result.done ? result.value : iter.next();
+	        });
+	  };
+
+	  function makeInvokeMethod(innerFn, self, context) {
+	    var state = GenStateSuspendedStart;
+
+	    return function invoke(method, arg) {
+	      if (state === GenStateExecuting) {
+	        throw new Error("Generator is already running");
+	      }
+
+	      if (state === GenStateCompleted) {
+	        if (method === "throw") {
+	          throw arg;
+	        }
+
+	        // Be forgiving, per 25.3.3.3.3 of the spec:
+	        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+	        return doneResult();
+	      }
+
+	      context.method = method;
+	      context.arg = arg;
+
+	      while (true) {
+	        var delegate = context.delegate;
+	        if (delegate) {
+	          var delegateResult = maybeInvokeDelegate(delegate, context);
+	          if (delegateResult) {
+	            if (delegateResult === ContinueSentinel) continue;
+	            return delegateResult;
+	          }
+	        }
+
+	        if (context.method === "next") {
+	          // Setting context._sent for legacy support of Babel's
+	          // function.sent implementation.
+	          context.sent = context._sent = context.arg;
+
+	        } else if (context.method === "throw") {
+	          if (state === GenStateSuspendedStart) {
+	            state = GenStateCompleted;
+	            throw context.arg;
+	          }
+
+	          context.dispatchException(context.arg);
+
+	        } else if (context.method === "return") {
+	          context.abrupt("return", context.arg);
+	        }
+
+	        state = GenStateExecuting;
+
+	        var record = tryCatch(innerFn, self, context);
+	        if (record.type === "normal") {
+	          // If an exception is thrown from innerFn, we leave state ===
+	          // GenStateExecuting and loop back for another invocation.
+	          state = context.done
+	            ? GenStateCompleted
+	            : GenStateSuspendedYield;
+
+	          if (record.arg === ContinueSentinel) {
+	            continue;
+	          }
+
+	          return {
+	            value: record.arg,
+	            done: context.done
+	          };
+
+	        } else if (record.type === "throw") {
+	          state = GenStateCompleted;
+	          // Dispatch the exception by looping back around to the
+	          // context.dispatchException(context.arg) call above.
+	          context.method = "throw";
+	          context.arg = record.arg;
+	        }
+	      }
+	    };
+	  }
+
+	  // Call delegate.iterator[context.method](context.arg) and handle the
+	  // result, either by returning a { value, done } result from the
+	  // delegate iterator, or by modifying context.method and context.arg,
+	  // setting context.delegate to null, and returning the ContinueSentinel.
+	  function maybeInvokeDelegate(delegate, context) {
+	    var method = delegate.iterator[context.method];
+	    if (method === undefined) {
+	      // A .throw or .return when the delegate iterator has no .throw
+	      // method always terminates the yield* loop.
+	      context.delegate = null;
+
+	      if (context.method === "throw") {
+	        if (delegate.iterator.return) {
+	          // If the delegate iterator has a return method, give it a
+	          // chance to clean up.
+	          context.method = "return";
+	          context.arg = undefined;
+	          maybeInvokeDelegate(delegate, context);
+
+	          if (context.method === "throw") {
+	            // If maybeInvokeDelegate(context) changed context.method from
+	            // "return" to "throw", let that override the TypeError below.
+	            return ContinueSentinel;
+	          }
+	        }
+
+	        context.method = "throw";
+	        context.arg = new TypeError(
+	          "The iterator does not provide a 'throw' method");
+	      }
+
+	      return ContinueSentinel;
+	    }
+
+	    var record = tryCatch(method, delegate.iterator, context.arg);
+
+	    if (record.type === "throw") {
+	      context.method = "throw";
+	      context.arg = record.arg;
+	      context.delegate = null;
+	      return ContinueSentinel;
+	    }
+
+	    var info = record.arg;
+
+	    if (! info) {
+	      context.method = "throw";
+	      context.arg = new TypeError("iterator result is not an object");
+	      context.delegate = null;
+	      return ContinueSentinel;
+	    }
+
+	    if (info.done) {
+	      // Assign the result of the finished delegate to the temporary
+	      // variable specified by delegate.resultName (see delegateYield).
+	      context[delegate.resultName] = info.value;
+
+	      // Resume execution at the desired location (see delegateYield).
+	      context.next = delegate.nextLoc;
+
+	      // If context.method was "throw" but the delegate handled the
+	      // exception, let the outer generator proceed normally. If
+	      // context.method was "next", forget context.arg since it has been
+	      // "consumed" by the delegate iterator. If context.method was
+	      // "return", allow the original .return call to continue in the
+	      // outer generator.
+	      if (context.method !== "return") {
+	        context.method = "next";
+	        context.arg = undefined;
+	      }
+
+	    } else {
+	      // Re-yield the result returned by the delegate method.
+	      return info;
+	    }
+
+	    // The delegate iterator is finished, so forget it and continue with
+	    // the outer generator.
+	    context.delegate = null;
+	    return ContinueSentinel;
+	  }
+
+	  // Define Generator.prototype.{next,throw,return} in terms of the
+	  // unified ._invoke helper method.
+	  defineIteratorMethods(Gp);
+
+	  Gp[toStringTagSymbol] = "Generator";
+
+	  // A Generator should always return itself as the iterator object when the
+	  // @@iterator function is called on it. Some browsers' implementations of the
+	  // iterator prototype chain incorrectly implement this, causing the Generator
+	  // object to not be returned from this call. This ensures that doesn't happen.
+	  // See https://github.com/facebook/regenerator/issues/274 for more details.
+	  Gp[iteratorSymbol] = function() {
+	    return this;
+	  };
+
+	  Gp.toString = function() {
+	    return "[object Generator]";
+	  };
+
+	  function pushTryEntry(locs) {
+	    var entry = { tryLoc: locs[0] };
+
+	    if (1 in locs) {
+	      entry.catchLoc = locs[1];
+	    }
+
+	    if (2 in locs) {
+	      entry.finallyLoc = locs[2];
+	      entry.afterLoc = locs[3];
+	    }
+
+	    this.tryEntries.push(entry);
+	  }
+
+	  function resetTryEntry(entry) {
+	    var record = entry.completion || {};
+	    record.type = "normal";
+	    delete record.arg;
+	    entry.completion = record;
+	  }
+
+	  function Context(tryLocsList) {
+	    // The root entry object (effectively a try statement without a catch
+	    // or a finally block) gives us a place to store values thrown from
+	    // locations where there is no enclosing try statement.
+	    this.tryEntries = [{ tryLoc: "root" }];
+	    tryLocsList.forEach(pushTryEntry, this);
+	    this.reset(true);
+	  }
+
+	  runtime.keys = function(object) {
+	    var keys = [];
+	    for (var key in object) {
+	      keys.push(key);
+	    }
+	    keys.reverse();
+
+	    // Rather than returning an object with a next method, we keep
+	    // things simple and return the next function itself.
+	    return function next() {
+	      while (keys.length) {
+	        var key = keys.pop();
+	        if (key in object) {
+	          next.value = key;
+	          next.done = false;
+	          return next;
+	        }
+	      }
+
+	      // To avoid creating an additional object, we just hang the .value
+	      // and .done properties off the next function object itself. This
+	      // also ensures that the minifier will not anonymize the function.
+	      next.done = true;
+	      return next;
+	    };
+	  };
+
+	  function values(iterable) {
+	    if (iterable) {
+	      var iteratorMethod = iterable[iteratorSymbol];
+	      if (iteratorMethod) {
+	        return iteratorMethod.call(iterable);
+	      }
+
+	      if (typeof iterable.next === "function") {
+	        return iterable;
+	      }
+
+	      if (!isNaN(iterable.length)) {
+	        var i = -1, next = function next() {
+	          while (++i < iterable.length) {
+	            if (hasOwn.call(iterable, i)) {
+	              next.value = iterable[i];
+	              next.done = false;
+	              return next;
+	            }
+	          }
+
+	          next.value = undefined;
+	          next.done = true;
+
+	          return next;
+	        };
+
+	        return next.next = next;
+	      }
+	    }
+
+	    // Return an iterator with no values.
+	    return { next: doneResult };
+	  }
+	  runtime.values = values;
+
+	  function doneResult() {
+	    return { value: undefined, done: true };
+	  }
+
+	  Context.prototype = {
+	    constructor: Context,
+
+	    reset: function(skipTempReset) {
+	      this.prev = 0;
+	      this.next = 0;
+	      // Resetting context._sent for legacy support of Babel's
+	      // function.sent implementation.
+	      this.sent = this._sent = undefined;
+	      this.done = false;
+	      this.delegate = null;
+
+	      this.method = "next";
+	      this.arg = undefined;
+
+	      this.tryEntries.forEach(resetTryEntry);
+
+	      if (!skipTempReset) {
+	        for (var name in this) {
+	          // Not sure about the optimal order of these conditions:
+	          if (name.charAt(0) === "t" &&
+	              hasOwn.call(this, name) &&
+	              !isNaN(+name.slice(1))) {
+	            this[name] = undefined;
+	          }
+	        }
+	      }
+	    },
+
+	    stop: function() {
+	      this.done = true;
+
+	      var rootEntry = this.tryEntries[0];
+	      var rootRecord = rootEntry.completion;
+	      if (rootRecord.type === "throw") {
+	        throw rootRecord.arg;
+	      }
+
+	      return this.rval;
+	    },
+
+	    dispatchException: function(exception) {
+	      if (this.done) {
+	        throw exception;
+	      }
+
+	      var context = this;
+	      function handle(loc, caught) {
+	        record.type = "throw";
+	        record.arg = exception;
+	        context.next = loc;
+
+	        if (caught) {
+	          // If the dispatched exception was caught by a catch block,
+	          // then let that catch block handle the exception normally.
+	          context.method = "next";
+	          context.arg = undefined;
+	        }
+
+	        return !! caught;
+	      }
+
+	      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+	        var entry = this.tryEntries[i];
+	        var record = entry.completion;
+
+	        if (entry.tryLoc === "root") {
+	          // Exception thrown outside of any try block that could handle
+	          // it, so set the completion value of the entire function to
+	          // throw the exception.
+	          return handle("end");
+	        }
+
+	        if (entry.tryLoc <= this.prev) {
+	          var hasCatch = hasOwn.call(entry, "catchLoc");
+	          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+	          if (hasCatch && hasFinally) {
+	            if (this.prev < entry.catchLoc) {
+	              return handle(entry.catchLoc, true);
+	            } else if (this.prev < entry.finallyLoc) {
+	              return handle(entry.finallyLoc);
+	            }
+
+	          } else if (hasCatch) {
+	            if (this.prev < entry.catchLoc) {
+	              return handle(entry.catchLoc, true);
+	            }
+
+	          } else if (hasFinally) {
+	            if (this.prev < entry.finallyLoc) {
+	              return handle(entry.finallyLoc);
+	            }
+
+	          } else {
+	            throw new Error("try statement without catch or finally");
+	          }
+	        }
+	      }
+	    },
+
+	    abrupt: function(type, arg) {
+	      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+	        var entry = this.tryEntries[i];
+	        if (entry.tryLoc <= this.prev &&
+	            hasOwn.call(entry, "finallyLoc") &&
+	            this.prev < entry.finallyLoc) {
+	          var finallyEntry = entry;
+	          break;
+	        }
+	      }
+
+	      if (finallyEntry &&
+	          (type === "break" ||
+	           type === "continue") &&
+	          finallyEntry.tryLoc <= arg &&
+	          arg <= finallyEntry.finallyLoc) {
+	        // Ignore the finally entry if control is not jumping to a
+	        // location outside the try/catch block.
+	        finallyEntry = null;
+	      }
+
+	      var record = finallyEntry ? finallyEntry.completion : {};
+	      record.type = type;
+	      record.arg = arg;
+
+	      if (finallyEntry) {
+	        this.method = "next";
+	        this.next = finallyEntry.finallyLoc;
+	        return ContinueSentinel;
+	      }
+
+	      return this.complete(record);
+	    },
+
+	    complete: function(record, afterLoc) {
+	      if (record.type === "throw") {
+	        throw record.arg;
+	      }
+
+	      if (record.type === "break" ||
+	          record.type === "continue") {
+	        this.next = record.arg;
+	      } else if (record.type === "return") {
+	        this.rval = this.arg = record.arg;
+	        this.method = "return";
+	        this.next = "end";
+	      } else if (record.type === "normal" && afterLoc) {
+	        this.next = afterLoc;
+	      }
+
+	      return ContinueSentinel;
+	    },
+
+	    finish: function(finallyLoc) {
+	      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+	        var entry = this.tryEntries[i];
+	        if (entry.finallyLoc === finallyLoc) {
+	          this.complete(entry.completion, entry.afterLoc);
+	          resetTryEntry(entry);
+	          return ContinueSentinel;
+	        }
+	      }
+	    },
+
+	    "catch": function(tryLoc) {
+	      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+	        var entry = this.tryEntries[i];
+	        if (entry.tryLoc === tryLoc) {
+	          var record = entry.completion;
+	          if (record.type === "throw") {
+	            var thrown = record.arg;
+	            resetTryEntry(entry);
+	          }
+	          return thrown;
+	        }
+	      }
+
+	      // The context.catch method must only be called with a location
+	      // argument that corresponds to a known catch block.
+	      throw new Error("illegal catch attempt");
+	    },
+
+	    delegateYield: function(iterable, resultName, nextLoc) {
+	      this.delegate = {
+	        iterator: values(iterable),
+	        resultName: resultName,
+	        nextLoc: nextLoc
+	      };
+
+	      if (this.method === "next") {
+	        // Deliberately forget the last sent value so that we don't
+	        // accidentally pass it on to the delegate.
+	        this.arg = undefined;
+	      }
+
+	      return ContinueSentinel;
+	    }
+	  };
+	})(
+	  // In sloppy mode, unbound `this` refers to the global object, fallback to
+	  // Function constructor if we're in global strict mode. That is sadly a form
+	  // of indirect eval which violates Content Security Policy.
+	  (function() { return this })() || Function("return this")()
+	);
+
+
+/***/ }),
+/* 280 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	exports.__esModule = true;
+
+	var _promise = __webpack_require__(281);
+
+	var _promise2 = _interopRequireDefault(_promise);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function (fn) {
+	  return function () {
+	    var gen = fn.apply(this, arguments);
+	    return new _promise2.default(function (resolve, reject) {
+	      function step(key, arg) {
+	        try {
+	          var info = gen[key](arg);
+	          var value = info.value;
+	        } catch (error) {
+	          reject(error);
+	          return;
+	        }
+
+	        if (info.done) {
+	          resolve(value);
+	        } else {
+	          return _promise2.default.resolve(value).then(function (value) {
+	            step("next", value);
+	          }, function (err) {
+	            step("throw", err);
+	          });
+	        }
+	      }
+
+	      return step("next");
+	    });
+	  };
+	};
+
+/***/ }),
+/* 281 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(282), __esModule: true };
+
+/***/ }),
+/* 282 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	__webpack_require__(76);
+	__webpack_require__(37);
+	__webpack_require__(59);
+	__webpack_require__(283);
+	__webpack_require__(300);
+	__webpack_require__(301);
+	module.exports = __webpack_require__(15).Promise;
+
+
+/***/ }),
+/* 283 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	'use strict';
 	var LIBRARY = __webpack_require__(41);
 	var global = __webpack_require__(11);
 	var ctx = __webpack_require__(16);
-	var classof = __webpack_require__(279);
+	var classof = __webpack_require__(284);
 	var $export = __webpack_require__(14);
 	var isObject = __webpack_require__(21);
 	var aFunction = __webpack_require__(17);
-	var anInstance = __webpack_require__(280);
-	var forOf = __webpack_require__(281);
-	var speciesConstructor = __webpack_require__(285);
-	var task = __webpack_require__(286).set;
-	var microtask = __webpack_require__(288)();
-	var newPromiseCapabilityModule = __webpack_require__(289);
-	var perform = __webpack_require__(290);
-	var promiseResolve = __webpack_require__(291);
+	var anInstance = __webpack_require__(285);
+	var forOf = __webpack_require__(286);
+	var speciesConstructor = __webpack_require__(290);
+	var task = __webpack_require__(291).set;
+	var microtask = __webpack_require__(293)();
+	var newPromiseCapabilityModule = __webpack_require__(294);
+	var perform = __webpack_require__(295);
+	var promiseResolve = __webpack_require__(296);
 	var PROMISE = 'Promise';
 	var TypeError = global.TypeError;
 	var process = global.process;
@@ -24058,7 +24979,7 @@
 	    this._h = 0;              // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
 	    this._n = false;          // <- notify
 	  };
-	  Internal.prototype = __webpack_require__(292)($Promise.prototype, {
+	  Internal.prototype = __webpack_require__(297)($Promise.prototype, {
 	    // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
 	    then: function then(onFulfilled, onRejected) {
 	      var reaction = newPromiseCapability(speciesConstructor(this, $Promise));
@@ -24090,7 +25011,7 @@
 
 	$export($export.G + $export.W + $export.F * !USE_NATIVE, { Promise: $Promise });
 	__webpack_require__(57)($Promise, PROMISE);
-	__webpack_require__(293)(PROMISE);
+	__webpack_require__(298)(PROMISE);
 	Wrapper = __webpack_require__(15)[PROMISE];
 
 	// statics
@@ -24109,7 +25030,7 @@
 	    return promiseResolve(LIBRARY && this === Wrapper ? $Promise : this, x);
 	  }
 	});
-	$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(294)(function (iter) {
+	$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(299)(function (iter) {
 	  $Promise.all(iter)['catch'](empty);
 	})), PROMISE, {
 	  // 25.4.4.1 Promise.all(iterable)
@@ -24156,7 +25077,7 @@
 
 
 /***/ }),
-/* 279 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// getting tag from 19.1.3.6 Object.prototype.toString()
@@ -24185,7 +25106,7 @@
 
 
 /***/ }),
-/* 280 */
+/* 285 */
 /***/ (function(module, exports) {
 
 	module.exports = function (it, Constructor, name, forbiddenField) {
@@ -24196,15 +25117,15 @@
 
 
 /***/ }),
-/* 281 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var ctx = __webpack_require__(16);
-	var call = __webpack_require__(282);
-	var isArrayIter = __webpack_require__(283);
+	var call = __webpack_require__(287);
+	var isArrayIter = __webpack_require__(288);
 	var anObject = __webpack_require__(20);
 	var toLength = __webpack_require__(53);
-	var getIterFn = __webpack_require__(284);
+	var getIterFn = __webpack_require__(289);
 	var BREAK = {};
 	var RETURN = {};
 	var exports = module.exports = function (iterable, entries, fn, that, ITERATOR) {
@@ -24227,7 +25148,7 @@
 
 
 /***/ }),
-/* 282 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// call something on iterator step with safe closing on error
@@ -24245,7 +25166,7 @@
 
 
 /***/ }),
-/* 283 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// check on default Array iterator
@@ -24259,10 +25180,10 @@
 
 
 /***/ }),
-/* 284 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var classof = __webpack_require__(279);
+	var classof = __webpack_require__(284);
 	var ITERATOR = __webpack_require__(58)('iterator');
 	var Iterators = __webpack_require__(43);
 	module.exports = __webpack_require__(15).getIteratorMethod = function (it) {
@@ -24273,7 +25194,7 @@
 
 
 /***/ }),
-/* 285 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 7.3.20 SpeciesConstructor(O, defaultConstructor)
@@ -24288,11 +25209,11 @@
 
 
 /***/ }),
-/* 286 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var ctx = __webpack_require__(16);
-	var invoke = __webpack_require__(287);
+	var invoke = __webpack_require__(292);
 	var html = __webpack_require__(56);
 	var cel = __webpack_require__(25);
 	var global = __webpack_require__(11);
@@ -24378,7 +25299,7 @@
 
 
 /***/ }),
-/* 287 */
+/* 292 */
 /***/ (function(module, exports) {
 
 	// fast apply, http://jsperf.lnkit.com/fast-apply/5
@@ -24400,11 +25321,11 @@
 
 
 /***/ }),
-/* 288 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var global = __webpack_require__(11);
-	var macrotask = __webpack_require__(286).set;
+	var macrotask = __webpack_require__(291).set;
 	var Observer = global.MutationObserver || global.WebKitMutationObserver;
 	var process = global.process;
 	var Promise = global.Promise;
@@ -24474,7 +25395,7 @@
 
 
 /***/ }),
-/* 289 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24498,7 +25419,7 @@
 
 
 /***/ }),
-/* 290 */
+/* 295 */
 /***/ (function(module, exports) {
 
 	module.exports = function (exec) {
@@ -24511,12 +25432,12 @@
 
 
 /***/ }),
-/* 291 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var anObject = __webpack_require__(20);
 	var isObject = __webpack_require__(21);
-	var newPromiseCapability = __webpack_require__(289);
+	var newPromiseCapability = __webpack_require__(294);
 
 	module.exports = function (C, x) {
 	  anObject(C);
@@ -24529,7 +25450,7 @@
 
 
 /***/ }),
-/* 292 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var hide = __webpack_require__(18);
@@ -24542,7 +25463,7 @@
 
 
 /***/ }),
-/* 293 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24562,7 +25483,7 @@
 
 
 /***/ }),
-/* 294 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var ITERATOR = __webpack_require__(58)('iterator');
@@ -24590,7 +25511,7 @@
 
 
 /***/ }),
-/* 295 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://github.com/tc39/proposal-promise-finally
@@ -24598,8 +25519,8 @@
 	var $export = __webpack_require__(14);
 	var core = __webpack_require__(15);
 	var global = __webpack_require__(11);
-	var speciesConstructor = __webpack_require__(285);
-	var promiseResolve = __webpack_require__(291);
+	var speciesConstructor = __webpack_require__(290);
+	var promiseResolve = __webpack_require__(296);
 
 	$export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
 	  var C = speciesConstructor(this, core.Promise || global.Promise);
@@ -24616,14 +25537,14 @@
 
 
 /***/ }),
-/* 296 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// https://github.com/tc39/proposal-promise-try
 	var $export = __webpack_require__(14);
-	var newPromiseCapability = __webpack_require__(289);
-	var perform = __webpack_require__(290);
+	var newPromiseCapability = __webpack_require__(294);
+	var perform = __webpack_require__(295);
 
 	$export($export.S, 'Promise', { 'try': function (callbackfn) {
 	  var promiseCapability = newPromiseCapability.f(this);
@@ -24634,7 +25555,91 @@
 
 
 /***/ }),
-/* 297 */
+/* 302 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _promise = __webpack_require__(281);
+
+	var _promise2 = _interopRequireDefault(_promise);
+
+	var _JSONP = __webpack_require__(303);
+
+	var _JSONP2 = _interopRequireDefault(_JSONP);
+
+	var _promiseToAsyncEvents = __webpack_require__(304);
+
+	var _promiseToAsyncEvents2 = _interopRequireDefault(_promiseToAsyncEvents);
+
+	var _util = __webpack_require__(306);
+
+	var _util2 = _interopRequireDefault(_util);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var API_DOMAIN = "https://route.uat.yuantutech.com";
+
+	var uid = _util2.default.query().unionId;
+
+	function getAPIUri(path) {
+	  return path.indexOf("http") == 0 ? path : API_DOMAIN + path;
+	}
+
+	function ajax(url, data) {
+	  url = getAPIUri(url);
+	  data = data || {};
+	  return new _promise2.default(function (reslove, reject) {
+	    var param = {};
+
+	    for (var key in data) {
+	      if (data[key] !== "" && data[key] !== "undefined" && data[key] !== undefined && data[key] !== null) {
+	        param[key] = data[key];
+	      }
+	    }
+
+	    (0, _JSONP2.default)(url, param, reslove, function () {
+	      reject({ msg: "请求错误" });
+	    });
+	  });
+	}
+
+	_promiseToAsyncEvents2.default.prototype.mock = function (url) {
+	  this.promise = ajax(url, {});
+	  return this;
+	};
+
+	exports.default = {
+	  getAppIndexNew: function getAppIndexNew(unionId) {
+	    //获取首页信息
+	    var obj = {
+	      unionId: unionId,
+	      invokerChannel: "H5",
+	      invokerDeviceType: "others",
+	      invokerAppVersion: "1.9.23"
+	    };
+	    return new _promiseToAsyncEvents2.default(ajax("/user-web/restapi/common/platform/appIndexNew", obj));
+	  },
+	  getMyEvaluate: function getMyEvaluate(corpId, currentPage) {
+	    var pageSize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 20;
+	    var unionId = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : uid;
+
+
+	    return new _promiseToAsyncEvents2.default(ajax('/user-web/restapi/ytDoct/getEvaluate', {
+	      corpId: corpId,
+	      currentPage: currentPage,
+	      pageSize: pageSize,
+	      unionId: unionId
+	    }));
+	  }
+	};
+
+/***/ }),
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24762,12 +25767,12 @@
 	module.exports = JSONP;
 
 /***/ }),
-/* 298 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict'
 
-	var events = __webpack_require__(299);
+	var events = __webpack_require__(305);
 
 	/**
 
@@ -24970,7 +25975,7 @@
 
 
 /***/ }),
-/* 299 */
+/* 305 */
 /***/ (function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -25278,7 +26283,7 @@
 
 
 /***/ }),
-/* 300 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25287,11 +26292,11 @@
 	  value: true
 	});
 
-	var _toConsumableArray2 = __webpack_require__(301);
+	var _toConsumableArray2 = __webpack_require__(307);
 
 	var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
-	var _url = __webpack_require__(306);
+	var _url = __webpack_require__(312);
 
 	var _url2 = _interopRequireDefault(_url);
 
@@ -25370,14 +26375,14 @@
 	exports.default = util;
 
 /***/ }),
-/* 301 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _from = __webpack_require__(302);
+	var _from = __webpack_require__(308);
 
 	var _from2 = _interopRequireDefault(_from);
 
@@ -25396,35 +26401,35 @@
 	};
 
 /***/ }),
-/* 302 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(303), __esModule: true };
+	module.exports = { "default": __webpack_require__(309), __esModule: true };
 
 /***/ }),
-/* 303 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	__webpack_require__(37);
-	__webpack_require__(304);
+	__webpack_require__(310);
 	module.exports = __webpack_require__(15).Array.from;
 
 
 /***/ }),
-/* 304 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var ctx = __webpack_require__(16);
 	var $export = __webpack_require__(14);
 	var toObject = __webpack_require__(5);
-	var call = __webpack_require__(282);
-	var isArrayIter = __webpack_require__(283);
+	var call = __webpack_require__(287);
+	var isArrayIter = __webpack_require__(288);
 	var toLength = __webpack_require__(53);
-	var createProperty = __webpack_require__(305);
-	var getIterFn = __webpack_require__(284);
+	var createProperty = __webpack_require__(311);
+	var getIterFn = __webpack_require__(289);
 
-	$export($export.S + $export.F * !__webpack_require__(294)(function (iter) { Array.from(iter); }), 'Array', {
+	$export($export.S + $export.F * !__webpack_require__(299)(function (iter) { Array.from(iter); }), 'Array', {
 	  // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
 	  from: function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
 	    var O = toObject(arrayLike);
@@ -25454,7 +26459,7 @@
 
 
 /***/ }),
-/* 305 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25468,7 +26473,7 @@
 
 
 /***/ }),
-/* 306 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -25494,8 +26499,8 @@
 
 	'use strict';
 
-	var punycode = __webpack_require__(307);
-	var util = __webpack_require__(309);
+	var punycode = __webpack_require__(313);
+	var util = __webpack_require__(315);
 
 	exports.parse = urlParse;
 	exports.resolve = urlResolve;
@@ -25570,7 +26575,7 @@
 	      'gopher:': true,
 	      'file:': true
 	    },
-	    querystring = __webpack_require__(310);
+	    querystring = __webpack_require__(316);
 
 	function urlParse(url, parseQueryString, slashesDenoteHost) {
 	  if (url && util.isObject(url) && url instanceof Url) return url;
@@ -26206,7 +27211,7 @@
 
 
 /***/ }),
-/* 307 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! https://mths.be/punycode v1.3.2 by @mathias */
@@ -26738,10 +27743,10 @@
 
 	}(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(308)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(314)(module), (function() { return this; }())))
 
 /***/ }),
-/* 308 */
+/* 314 */
 /***/ (function(module, exports) {
 
 	module.exports = function(module) {
@@ -26757,7 +27762,7 @@
 
 
 /***/ }),
-/* 309 */
+/* 315 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -26779,17 +27784,17 @@
 
 
 /***/ }),
-/* 310 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	exports.decode = exports.parse = __webpack_require__(311);
-	exports.encode = exports.stringify = __webpack_require__(312);
+	exports.decode = exports.parse = __webpack_require__(317);
+	exports.encode = exports.stringify = __webpack_require__(318);
 
 
 /***/ }),
-/* 311 */
+/* 317 */
 /***/ (function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -26875,7 +27880,7 @@
 
 
 /***/ }),
-/* 312 */
+/* 318 */
 /***/ (function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -26945,7 +27950,426 @@
 
 
 /***/ }),
-/* 313 */
+/* 319 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _promise = __webpack_require__(281);
+
+	var _promise2 = _interopRequireDefault(_promise);
+
+	var _regenerator = __webpack_require__(277);
+
+	var _regenerator2 = _interopRequireDefault(_regenerator);
+
+	var _asyncToGenerator2 = __webpack_require__(280);
+
+	var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+	var _classCallCheck2 = __webpack_require__(28);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(29);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _alert = __webpack_require__(272);
+
+	var _alert2 = _interopRequireDefault(_alert);
+
+	__webpack_require__(320);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/*
+	 * @Author: saohui 
+	 * @Date: 2017-10-23 11:02:57 
+	 * @Last Modified by: saohui
+	 * @Last Modified time: 2017-10-24 18:55:28
+	 */
+
+	var WINDOW_WIDTH = window.innerWidth,
+	    WINDOW_HEIGHT = window.innerHeight;
+
+	var TagWall = function () {
+	  function TagWall(tagCanvas, width, height) {
+	    (0, _classCallCheck3.default)(this, TagWall);
+
+	    this.tagCanvas = tagCanvas;
+
+	    this.wrapperWidth = width || WINDOW_WIDTH;
+	    this.wrapperHerght = height || WINDOW_HEIGHT;
+
+	    tagCanvas.width = this.wrapperWidth;
+	    tagCanvas.height = this.wrapperHerght;
+
+	    this.ctx = tagCanvas.getContext('2d');
+
+	    this.footerHeight = 140;
+	    this.bgHeight = this.wrapperHerght - this.footerHeight;
+	    this.bgColor = 'rgba( 0,0,0, .5 )';
+
+	    this.boxPadding = 30;
+	    this.width = this.wrapperWidth - this.boxPadding * 2;
+	    this.height = this.bgHeight - this.footerHeight - this.boxPadding; // 只要上边框
+	    this.tagPadding = 5;
+
+	    this.color = '#fff';
+	    this.fontFamily = 'Arial';
+	    this.minFontSize = 30;
+	    this.maxFontSize = 60;
+
+	    this.babyName = '';
+	    this.logo = null;
+	    this.QRImg = null;
+	    this.tagList = [];
+	  }
+
+	  (0, _createClass3.default)(TagWall, [{
+	    key: 'initLogo',
+	    value: function () {
+	      var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(logoImg) {
+	        var width, img;
+	        return _regenerator2.default.wrap(function _callee$(_context) {
+	          while (1) {
+	            switch (_context.prev = _context.next) {
+	              case 0:
+	                width = this.width * .28;
+	                _context.prev = 1;
+	                _context.next = 4;
+	                return loadImg(logoImg);
+
+	              case 4:
+	                img = _context.sent;
+
+	                this.logo = {
+	                  img: img,
+	                  width: width,
+	                  height: width,
+	                  left: Math.floor((this.width - width) / 2),
+	                  top: Math.floor((this.height + this.footerHeight - this.boxPadding - width) / 2)
+	                };
+	                _context.next = 11;
+	                break;
+
+	              case 8:
+	                _context.prev = 8;
+	                _context.t0 = _context['catch'](1);
+
+	                if (_context.t0.success === false) {
+	                  _alert2.default.show(_context.t0.msg, 1000);
+	                }
+
+	              case 11:
+	              case 'end':
+	                return _context.stop();
+	            }
+	          }
+	        }, _callee, this, [[1, 8]]);
+	      }));
+
+	      function initLogo(_x) {
+	        return _ref.apply(this, arguments);
+	      }
+
+	      return initLogo;
+	    }()
+	  }, {
+	    key: 'initQR',
+	    value: function () {
+	      var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(url) {
+	        var width, img;
+	        return _regenerator2.default.wrap(function _callee2$(_context2) {
+	          while (1) {
+	            switch (_context2.prev = _context2.next) {
+	              case 0:
+	                width = 130;
+	                _context2.prev = 1;
+	                _context2.next = 4;
+	                return loadImg(url);
+
+	              case 4:
+	                img = _context2.sent;
+
+	                this.QRImg = {
+	                  img: img,
+	                  width: width,
+	                  height: width,
+	                  left: Math.floor(this.wrapperWidth + (this.footerHeight - width) / 2 - this.footerHeight - 4),
+	                  top: Math.floor(this.wrapperHerght + (this.footerHeight - width) / 2 - this.footerHeight)
+	                };
+	                _context2.next = 11;
+	                break;
+
+	              case 8:
+	                _context2.prev = 8;
+	                _context2.t0 = _context2['catch'](1);
+
+	                if (_context2.t0.success === false) {
+	                  _alert2.default.show(_context2.t0.msg, 1000);
+	                }
+
+	              case 11:
+	              case 'end':
+	                return _context2.stop();
+	            }
+	          }
+	        }, _callee2, this, [[1, 8]]);
+	      }));
+
+	      function initQR(_x2) {
+	        return _ref2.apply(this, arguments);
+	      }
+
+	      return initQR;
+	    }()
+	  }, {
+	    key: 'initBabyName',
+	    value: function initBabyName() {
+	      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+	      this.babyName = name + ' 宝宝';
+	    }
+	  }, {
+	    key: 'addTag',
+	    value: function addTag(text) {
+	      var ret = {
+	        text: text
+	      };
+
+	      this.countPosition(ret, text);
+
+	      this.tagList.push(ret);
+	    }
+	  }, {
+	    key: 'countPosition',
+	    value: function countPosition(obj, text) {
+	      var ctx = this.ctx;
+
+	      var fontSize = Math.floor(random(.9) * (this.maxFontSize - this.minFontSize) / 2 + this.minFontSize);
+
+	      ctx.font = fontSize + 'px ' + this.fontFamily;
+
+	      obj.fontSize = fontSize;
+	      obj.width = ctx.measureText(text).width + this.tagPadding * 2;
+	      obj.height = fontSize + this.tagPadding * 2;
+	      obj.left = Math.floor(random() * (this.width - obj.width));
+	      obj.top = Math.floor(random() * (this.height - obj.height));
+
+	      if (this.checkColl(obj)) {
+	        console.log('碰撞了');
+	        this.countPosition(obj, text);
+	      }
+
+	      return obj;
+	    }
+	  }, {
+	    key: 'checkColl',
+	    value: function checkColl(obj) {
+	      var left2 = obj.left,
+	          top2 = obj.top,
+	          right2 = obj.left + obj.width,
+	          bottom2 = obj.top + obj.height;
+	      // console.log( left, right, top, bottom )
+
+	      var ret = this.tagList.some(function (item) {
+	        return andArea(item, left2, top2, right2, bottom2);
+	      });
+	      // console.log( ret )
+	      // console.log( this.logo, obj )
+	      return ret || andArea({ // 图片边框
+	        left: this.logo.left - this.tagPadding,
+	        top: this.logo.top - this.tagPadding,
+	        height: this.logo.height + this.tagPadding * 2,
+	        width: this.logo.width + this.tagPadding * 2
+	      }, left2, top2, right2, bottom2);
+
+	      // 相交面积等于 0 的时候说明没有碰撞
+	      function andArea(item, left2, top2, right2, bottom2) {
+	        var left1 = item.left,
+	            top1 = item.top,
+	            right1 = item.left + item.width,
+	            bottom1 = item.top + item.height;
+
+	        return left1 < right2 && right1 > left2 && top1 < bottom2 && bottom1 > top2;
+	      }
+	    }
+	  }, {
+	    key: 'renderQRCode',
+	    value: function renderQRCode(ctx) {
+
+	      var fontSize = Math.floor((this.wrapperWidth - 200) / 15);
+	      var left = this.boxPadding,
+	          top = this.bgHeight + (this.footerHeight - fontSize) / 2 + fontSize - 4;
+
+	      ctx.beginPath();
+	      ctx.fillStyle = '#fff';
+	      ctx.fillRect(0, this.bgHeight, this.wrapperWidth, this.footerHeight);
+	      ctx.font = fontSize + 'px ' + this.fontFamily;
+	      ctx.fillStyle = '#000';
+	      ctx.textAlign = 'left';
+	      ctx.fillText('快来定制你的宝宝专属AI标签吧', left, top);
+
+	      ctx.beginPath();
+	      var QRImg = this.QRImg;
+	      ctx.drawImage(QRImg.img, QRImg.left, QRImg.top, QRImg.width, QRImg.height);
+	    }
+	  }, {
+	    key: 'renderName',
+	    value: function renderName(ctx) {
+
+	      var fontSize = 48;
+	      var left = this.width / 2 + this.boxPadding,
+	          top = this.bgHeight - this.footerHeight + fontSize + (this.footerHeight - fontSize) / 2;
+
+	      ctx.beginPath();
+	      ctx.font = fontSize + 'px ' + this.fontFamily;
+	      ctx.fillStyle = '#34f8ff';
+	      ctx.textAlign = 'center';
+	      ctx.fillText(this.babyName, left, top);
+
+	      // 左括号
+	      left = 68;
+	      top = this.bgHeight - this.footerHeight + (this.footerHeight - fontSize * 1.5) / 2;
+
+	      ctx.beginPath();
+	      ctx.fillRect(left, top, 6, fontSize * 1.5);
+	      ctx.beginPath();
+	      ctx.fillRect(left, top, 32, 6);
+
+	      // 右括号
+	      left = this.wrapperWidth - 68;
+
+	      ctx.beginPath();
+	      ctx.fillRect(left, top, 6, fontSize * 1.5);
+
+	      left = left - 26;
+	      top = top + fontSize * 1.5;
+	      ctx.beginPath();
+	      ctx.fillRect(left, top, 32, 6);
+	    }
+	  }, {
+	    key: 'renderTags',
+	    value: function renderTags(ctx) {
+	      for (var i = 0; i < this.tagList.length; i++) {
+	        var item = this.tagList[i];
+
+	        // console.log( item )
+	        ctx.beginPath();
+	        ctx.font = item.fontSize + 'px ' + this.fontFamily;
+	        ctx.fillStyle = this.color;
+	        ctx.textAlign = 'left';
+
+	        var left = item.left + this.tagPadding + this.boxPadding,
+	            top = item.top + this.tagPadding + item.height - 4 + this.boxPadding;
+
+	        ctx.fillText(item.text, left, top);
+	      }
+	    }
+	  }, {
+	    key: 'renderLogoAndBg',
+	    value: function renderLogoAndBg(ctx) {
+	      var logo = this.logo;
+
+	      ctx.beginPath();
+	      // 背景绘制
+	      ctx.drawImage(logo.img, (this.wrapperWidth - this.bgHeight) / 2, 0, this.bgHeight, this.bgHeight);
+	      ctx.fillStyle = this.bgColor;
+	      ctx.fillRect(0, 0, this.wrapperWidth, this.bgHeight);
+
+	      // logo
+	      var rx = Math.floor(logo.left + logo.width / 2) + this.boxPadding,
+	          ry = Math.floor(logo.top + logo.height / 2) + this.boxPadding,
+	          r = logo.width / 2,
+	          left = logo.left + this.boxPadding,
+	          top = logo.top + this.boxPadding;
+	      ctx.save();
+	      ctx.arc(rx, ry, r, 0, Math.PI * 2);
+	      ctx.clip();
+	      ctx.drawImage(logo.img, left, top, logo.width, logo.height);
+	      ctx.restore();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render(body) {
+	      // console.log( this.tagList, JSON.stringify( this.tagList ) )
+	      var ctx = this.ctx;
+	      ctx.clearRect(0, 0, this.wrapperWidth, this.wrapperHerght);
+
+	      var logo = this.logo;
+	      if (logo) {
+	        this.renderLogoAndBg(ctx);
+	      }
+
+	      this.renderQRCode(ctx);
+
+	      this.renderTags(ctx);
+
+	      this.renderName(ctx);
+
+	      try {
+	        var beauty = new Image();
+	        beauty.src = this.tagCanvas.toDataURL();
+	        body.appendChild(beauty);
+	      } catch (e) {
+	        console.error(e);
+	        // body.innerHTML = ( JSON.stringify( e ))
+	      }
+	    }
+	  }]);
+	  return TagWall;
+	}();
+
+	exports.default = TagWall;
+
+
+	function loadImg(url) {
+	  var beauty = new Image();
+	  beauty.src = url;
+	  beauty.crossOrigin = "Anonymous";
+
+	  return new _promise2.default(function (resolve, reject) {
+
+	    if (beauty.complete) {
+	      resolve(beauty);
+	    } else {
+	      beauty.onload = function () {
+	        resolve(beauty);
+	      };
+	      beauty.onerror = function () {
+	        reject({ success: false, msg: '加载logo失败，请刷新重试' });
+	      };
+	    }
+	  });
+	}
+
+	function random() {
+	  var center = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : .5;
+
+	  var cheap = Math.random() > .6 ? .1 : Math.random() > .4 ? .2 : Math.random() > .2 ? .3 : Math.random() > .1 ? .4 : .5;
+	  cheap = (Math.random() > .5 ? -cheap : cheap) + center;
+	  var ret = (Math.random() - cheap) * (Math.random() - cheap) + cheap;
+
+	  if (!(ret > 0 && ret < 1)) {
+	    ret = random();
+	  }
+	  return ret;
+	}
+
+/***/ }),
+/* 320 */
+/***/ (function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27004,899 +28428,6 @@
 	}(_react2.default.Component);
 
 	exports.default = App;
-
-/***/ }),
-/* 314 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends2 = __webpack_require__(315);
-
-	var _extends3 = _interopRequireDefault(_extends2);
-
-	var _getPrototypeOf = __webpack_require__(2);
-
-	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-	var _classCallCheck2 = __webpack_require__(28);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	var _createClass2 = __webpack_require__(29);
-
-	var _createClass3 = _interopRequireDefault(_createClass2);
-
-	var _possibleConstructorReturn2 = __webpack_require__(33);
-
-	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-	var _inherits2 = __webpack_require__(79);
-
-	var _inherits3 = _interopRequireDefault(_inherits2);
-
-	var _react = __webpack_require__(87);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _util = __webpack_require__(300);
-
-	var _util2 = _interopRequireDefault(_util);
-
-	var _DataCenter = __webpack_require__(275);
-
-	var _DataCenter2 = _interopRequireDefault(_DataCenter);
-
-	var _PullUpRefresh = __webpack_require__(320);
-
-	var _PullUpRefresh2 = _interopRequireDefault(_PullUpRefresh);
-
-	__webpack_require__(322);
-
-	var _EvaluateItem = __webpack_require__(323);
-
-	var _EvaluateItem2 = _interopRequireDefault(_EvaluateItem);
-
-	var _TagList = __webpack_require__(325);
-
-	var _TagList2 = _interopRequireDefault(_TagList);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var ShowEvaluate = function (_React$Component) {
-	  (0, _inherits3.default)(ShowEvaluate, _React$Component);
-
-	  function ShowEvaluate(props) {
-	    (0, _classCallCheck3.default)(this, ShowEvaluate);
-
-	    var _this = (0, _possibleConstructorReturn3.default)(this, (ShowEvaluate.__proto__ || (0, _getPrototypeOf2.default)(ShowEvaluate)).call(this, props));
-
-	    var query = _util2.default.query();
-	    _this.unionId = query.unionId;
-	    _this.corpId = query.corpId;
-
-	    _this.state = (0, _extends3.default)({}, _this.state, { loading: true,
-	      success: true,
-	      totalTag: 0,
-	      tagList: [],
-	      evaluateList: [],
-	      totalEvaluate: 0
-	    });
-	    return _this;
-	  }
-
-	  (0, _createClass3.default)(ShowEvaluate, [{
-	    key: 'onNextPage',
-	    value: function onNextPage(_ref) {
-	      var pageSize = _ref.pageSize,
-	          currentPage = _ref.currentPage,
-	          packingLoadCtx = _ref.packingLoadCtx;
-	      var corpId = this.corpId,
-	          unionId = this.unionId;
-
-
-	      _DataCenter2.default.getMyEvaluate(corpId, currentPage + 1, pageSize, unionId).subscribe(packingLoadCtx(this)).mock('http://rap.yuantutech.com/mockjsdata/25/restapi/ytDoct/getEvaluate').start();
-	    }
-	  }, {
-	    key: 'onComplete',
-	    value: function onComplete(result, _ref2) {
-	      var onFinished = _ref2.onFinished;
-
-	      console.log(result);
-	      var _result$data = result.data,
-	          tagData = _result$data.tagData,
-	          evaluateData = _result$data.evaluateData;
-	      var evaluateList = this.state.evaluateList,
-	          resultEvaluateList = evaluateList.concat(evaluateData.evaluateList);
-
-
-	      if (result.success) {
-	        this.setState({
-	          loading: false,
-	          success: true,
-	          totalTag: tagData.totalTag,
-	          tagList: tagData.tagList,
-	          evaluateList: resultEvaluateList,
-	          totalEvaluate: evaluateData.totalEvaluate
-	        });
-	      }
-
-	      if (evaluateData.totalEvaluate == resultEvaluateList.length) {
-	        onFinished();
-	      }
-	    }
-
-	    /***** render 区开始 *****/
-
-	  }, {
-	    key: 'renderHeader',
-	    value: function renderHeader() {
-	      var _state = this.state,
-	          tagList = _state.tagList,
-	          totalEvaluate = _state.totalEvaluate;
-
-
-	      return tagList.length > 0 ? _react2.default.createElement(
-	        _TagList2.default,
-	        { showMore: true },
-	        tagList.map(function (item, key) {
-	          return _react2.default.createElement(
-	            'div',
-	            { key: key, disabled: item.color == 2 },
-	            item.name + '(' + item.tagNum + ')'
-	          );
-	        })
-	      ) : null;
-	    }
-	  }, {
-	    key: 'renderBody',
-	    value: function renderBody() {
-	      var evaluateList = this.state.evaluateList;
-
-
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'show-evaluate-container' },
-	        evaluateList.map(function (item, key) {
-	          return _react2.default.createElement(_EvaluateItem2.default, {
-	            key: key,
-	            data: {
-	              userName: item.patientName.slice(0, 1) + '**',
-	              point: item.totalEvaluate,
-	              content: item.evaluate,
-	              date: item.updateTime,
-	              append: item.appendEvaluate,
-	              appendDate: item.appendTime
-	            },
-	            isShowAppend: true,
-	            isEvalDataLineLt2: false });
-	        })
-	      );
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-
-	      return _react2.default.createElement(
-	        _PullUpRefresh2.default,
-	        { className: 'show-evaluate',
-	          initPageSize: 20,
-	          onNextPage: function onNextPage(e) {
-	            return _this2.onNextPage(e);
-	          }
-	        },
-	        this.renderHeader(),
-	        this.renderBody()
-	      );
-	    }
-	  }]);
-	  return ShowEvaluate;
-	}(_react2.default.Component); /*
-	                               * @Author: saohui 
-	                               * @Date: 2017-10-17 11:24:06 
-	                               * @Last Modified by: saohui
-	                               * @Last Modified time: 2017-10-17 14:26:21
-	                               */
-
-	exports.default = ShowEvaluate;
-
-/***/ }),
-/* 315 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	exports.__esModule = true;
-
-	var _assign = __webpack_require__(316);
-
-	var _assign2 = _interopRequireDefault(_assign);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _assign2.default || function (target) {
-	  for (var i = 1; i < arguments.length; i++) {
-	    var source = arguments[i];
-
-	    for (var key in source) {
-	      if (Object.prototype.hasOwnProperty.call(source, key)) {
-	        target[key] = source[key];
-	      }
-	    }
-	  }
-
-	  return target;
-	};
-
-/***/ }),
-/* 316 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(317), __esModule: true };
-
-/***/ }),
-/* 317 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	__webpack_require__(318);
-	module.exports = __webpack_require__(15).Object.assign;
-
-
-/***/ }),
-/* 318 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	// 19.1.3.1 Object.assign(target, source)
-	var $export = __webpack_require__(14);
-
-	$export($export.S + $export.F, 'Object', { assign: __webpack_require__(319) });
-
-
-/***/ }),
-/* 319 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	// 19.1.2.1 Object.assign(target, source, ...)
-	var getKeys = __webpack_require__(47);
-	var gOPS = __webpack_require__(70);
-	var pIE = __webpack_require__(71);
-	var toObject = __webpack_require__(5);
-	var IObject = __webpack_require__(50);
-	var $assign = Object.assign;
-
-	// should work with symbols and should have deterministic property order (V8 bug)
-	module.exports = !$assign || __webpack_require__(24)(function () {
-	  var A = {};
-	  var B = {};
-	  // eslint-disable-next-line no-undef
-	  var S = Symbol();
-	  var K = 'abcdefghijklmnopqrst';
-	  A[S] = 7;
-	  K.split('').forEach(function (k) { B[k] = k; });
-	  return $assign({}, A)[S] != 7 || Object.keys($assign({}, B)).join('') != K;
-	}) ? function assign(target, source) { // eslint-disable-line no-unused-vars
-	  var T = toObject(target);
-	  var aLen = arguments.length;
-	  var index = 1;
-	  var getSymbols = gOPS.f;
-	  var isEnum = pIE.f;
-	  while (aLen > index) {
-	    var S = IObject(arguments[index++]);
-	    var keys = getSymbols ? getKeys(S).concat(getSymbols(S)) : getKeys(S);
-	    var length = keys.length;
-	    var j = 0;
-	    var key;
-	    while (length > j) if (isEnum.call(S, key = keys[j++])) T[key] = S[key];
-	  } return T;
-	} : $assign;
-
-
-/***/ }),
-/* 320 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _assign = __webpack_require__(316);
-
-	var _assign2 = _interopRequireDefault(_assign);
-
-	var _getPrototypeOf = __webpack_require__(2);
-
-	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-	var _classCallCheck2 = __webpack_require__(28);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	var _createClass2 = __webpack_require__(29);
-
-	var _createClass3 = _interopRequireDefault(_createClass2);
-
-	var _possibleConstructorReturn2 = __webpack_require__(33);
-
-	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-	var _inherits2 = __webpack_require__(79);
-
-	var _inherits3 = _interopRequireDefault(_inherits2);
-
-	var _react = __webpack_require__(87);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	__webpack_require__(321);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * 
-	 * 下拉刷新（ 可用于分页 ）
-	 * 此组件之后，不要有元素，因为此组件是基于 body 的滚动条简体
-	 * 当翻页的时候，请自行进行记录当前
-	 * @export props.onNextPage function 当进行下拉刷新的时候，调用此事件，此事件的参数是 已经被刷新过几次，但是此数字和第几页不同，因为有可能有请求失败
-	 * @export props.loadingHtml html 自定义 loading 样式
-	 * @export props.finishedHtml html 自定义，没有数据的提示
-	 * @export props.childen html 正文 html 的内容
-	 * @export props.className 容器的 className
-	 * @class PullUpRefresh
-	 * @extends {Component}
-	 */
-	/*
-	 * @Author: saohui 
-	 * @Date: 2017-10-17 11:19:53 
-	 * @Last Modified by: saohui
-	 * @Last Modified time: 2017-10-17 11:48:16
-	 */
-
-	var PullUpRefresh = function (_Component) {
-	  (0, _inherits3.default)(PullUpRefresh, _Component);
-
-	  function PullUpRefresh(props) {
-	    (0, _classCallCheck3.default)(this, PullUpRefresh);
-
-	    var _this = (0, _possibleConstructorReturn3.default)(this, (PullUpRefresh.__proto__ || (0, _getPrototypeOf2.default)(PullUpRefresh)).call(this, props));
-
-	    _this.state = {
-	      currentPage: 0,
-	      pageSize: props.initPageSize || 20,
-	      loadLock: false,
-	      isFinished: false,
-	      packingLoadCtx: function packingLoadCtx(ctx) {
-	        return _this.packingLoadCtx(ctx);
-	      }
-	    };
-	    _this.nextPageMethod = {
-	      onFinished: function onFinished() {
-	        return _this.setFinished(true);
-	      },
-	      continueLoad: function continueLoad() {
-	        return _this.setFinished(false);
-	      }
-	    };
-	    return _this;
-	  }
-
-	  (0, _createClass3.default)(PullUpRefresh, [{
-	    key: 'packingLoadCtx',
-	    value: function packingLoadCtx(ctx) {
-	      var state = this.state,
-	          nextPageMethod = this.nextPageMethod;
-
-
-	      state.loadLock = true;
-	      return {
-	        onComplete: function onComplete(result) {
-	          state.loadLock = false;
-
-	          if (result.success) {
-	            state.currentPage++;
-	          }
-
-	          ctx.onComplete && ctx.onComplete(result, nextPageMethod);
-	        },
-	        onError: function onError(result) {
-	          ctx.onError && ctx.onError(result);
-	        },
-	        onStart: function onStart() {
-	          ctx.onSendBefore && ctx.onStart();
-	        },
-	        onProgress: function onProgress() {
-	          ctx.onProgress && ctx.onProgress();
-	        }
-	      };
-	    }
-	  }, {
-	    key: 'setFinished',
-	    value: function setFinished(val) {
-	      this.setState({
-	        isFinished: val
-	      });
-	      this.regEventScroll(val);
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.regEventScroll(this.state.isFinished);
-
-	      // 默认先去加载第一页
-	      var onNextPage = this.props.onNextPage;
-	      var state = this.state;
-
-	      onNextPage && onNextPage((0, _assign2.default)(state));
-	    }
-	  }, {
-	    key: 'regEventScroll',
-	    value: function regEventScroll(isFinished) {
-	      if (isFinished) {
-	        window.onscroll = null;
-	      } else {
-	        window.onscroll = this.myScroll.bind(this);
-	      }
-	    }
-	  }, {
-	    key: 'myScroll',
-	    value: function myScroll() {
-	      var _this2 = this;
-
-	      var onNextPage = this.props.onNextPage;
-
-
-	      clearTimeout(this.timer);
-
-	      this.timer = setTimeout(function () {
-	        var state = _this2.state;
-
-
-	        var scrollHeight = document.body.scrollHeight;
-	        var scrollTop = window.scrollY;
-	        var screenHeight = window.screen.height;
-
-	        if (scrollHeight - scrollTop < screenHeight + 20) {
-
-	          !state.isFinished && !state.loadLock && onNextPage && onNextPage((0, _assign2.default)(state));
-	        }
-	      }, 100);
-	    }
-
-	    /***** render 区开始 *****/
-
-	  }, {
-	    key: 'renderLoading',
-	    value: function renderLoading() {
-	      var props = this.props;
-
-	      return props.loadingHtml ? props.loadingHtml : _react2.default.createElement(
-	        'div',
-	        { className: 'pull-up-fresh-after' },
-	        _react2.default.createElement('span', { className: 'icon-h-loading ' }),
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'txt-info' },
-	          '\u52A0\u8F7D\u4E2D...'
-	        )
-	      );
-	    }
-	  }, {
-	    key: 'renderFinished',
-	    value: function renderFinished() {
-	      var props = this.props;
-
-	      return props.finishedHtml ? props.finishedHtml : _react2.default.createElement(
-	        'div',
-	        { className: 'pull-up-fresh-after' },
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'txt-info' },
-	          '\u5DF2\u7ECF\u6CA1\u6709\u66F4\u591A\u5185\u5BB9\u4E86'
-	        )
-	      );
-	    }
-	  }, {
-	    key: 'renderBody',
-	    value: function renderBody() {
-	      var props = this.props;
-
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        props.children
-	      );
-	    }
-	  }, {
-	    key: 'renderFooter',
-	    value: function renderFooter() {
-	      var state = this.state;
-
-	      return !state.isFinished ? this.renderLoading() : this.renderFinished();
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var className = this.props.className;
-
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'pull-up-fresh ' + (className || '') },
-	        this.renderBody(),
-	        this.renderFooter()
-	      );
-	    }
-	  }]);
-	  return PullUpRefresh;
-	}(_react.Component);
-
-	PullUpRefresh.propTypes = {
-	  onNextPage: _react.PropTypes.func,
-	  loadingHtml: _react.PropTypes.element,
-	  finishedHtml: _react.PropTypes.element,
-
-	  initPageSize: _react.PropTypes.number
-	};
-	exports.default = PullUpRefresh;
-
-/***/ }),
-/* 321 */
-/***/ (function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 322 */
-/***/ (function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 323 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _getPrototypeOf = __webpack_require__(2);
-
-	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-	var _classCallCheck2 = __webpack_require__(28);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	var _createClass2 = __webpack_require__(29);
-
-	var _createClass3 = _interopRequireDefault(_createClass2);
-
-	var _possibleConstructorReturn2 = __webpack_require__(33);
-
-	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-	var _inherits2 = __webpack_require__(79);
-
-	var _inherits3 = _interopRequireDefault(_inherits2);
-
-	var _react = __webpack_require__(87);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	__webpack_require__(324);
-
-	var _util = __webpack_require__(300);
-
-	var _util2 = _interopRequireDefault(_util);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * 
-	 * 
-	 * @export props = {
-	 *   data: {
-	        "userName":"王XX",
-	        "point":"4.5",
-	        "content":"医生的厉害啊，当代华佗啊！",
-	        "date":"1499841651000",
-	        "append":"药效好到没朋友！",
-	        "appendDate":"1499844960000"
-	      }
-	 *   ,isShowAppend: true / false => 是否显示追加
-	 *   ,isEvalDataLineLt2: true / false => 评价内容是否折叠两行
-	 * }
-	 * @class EvaluateItem
-	 * @extends {React.Component}
-	 */
-	var EvaluateItem = function (_Component) {
-	  (0, _inherits3.default)(EvaluateItem, _Component);
-
-	  function EvaluateItem() {
-	    (0, _classCallCheck3.default)(this, EvaluateItem);
-	    return (0, _possibleConstructorReturn3.default)(this, (EvaluateItem.__proto__ || (0, _getPrototypeOf2.default)(EvaluateItem)).apply(this, arguments));
-	  }
-
-	  (0, _createClass3.default)(EvaluateItem, [{
-	    key: 'renderStar',
-	    value: function renderStar(val) {
-	      var lightVal = Math.round(val);
-	      var stars = [1, 2, 3, 4, 5];
-
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'show-evaluate-stars' },
-	        stars.map(function (item, key) {
-	          var starClassName = item <= lightVal ? 'evaluate-star-light' : '';
-	          return _react2.default.createElement('span', { key: key, className: 'evaluate-star-item ' + starClassName });
-	        })
-	      );
-	    }
-	  }, {
-	    key: 'renderHeader',
-	    value: function renderHeader() {
-	      var _props$data = this.props.data,
-	          userName = _props$data.userName,
-	          date = _props$data.date,
-	          point = _props$data.point;
-
-	      return _react2.default.createElement(
-	        'header',
-	        { className: 'show-evaluate-information' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'show-evaluate-person' },
-	          userName
-	        ),
-	        this.renderStar(point),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'show-evaluate-time' },
-	          _util2.default.dateFormatGMT(date, 'yyyy-MM-dd')
-	        )
-	      );
-	    }
-	  }, {
-	    key: 'renderBody',
-	    value: function renderBody() {
-	      var _props = this.props,
-	          isShowAppend = _props.isShowAppend,
-	          isEvalDataLineLt2 = _props.isEvalDataLineLt2;
-	      var _props$data2 = this.props.data,
-	          content = _props$data2.content,
-	          append = _props$data2.append,
-	          appendDate = _props$data2.appendDate;
-
-	      return _react2.default.createElement(
-	        'section',
-	        { className: 'show-evaluate-content' },
-	        _react2.default.createElement(
-	          'p',
-	          { className: 'show-evaluate-text ' + (isEvalDataLineLt2 ? 'txt-overflow-two' : '') },
-	          content
-	        ),
-	        isShowAppend && append ? _react2.default.createElement(
-	          'div',
-	          { className: 'show-evaluate-extra' },
-	          _react2.default.createElement(
-	            'header',
-	            { className: 'title txt-info txt-line-wrapper' },
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'txt-line' },
-	              '\u8FFD\u52A0\u8BC4\u4EF7'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'section',
-	            null,
-	            _react2.default.createElement(
-	              'p',
-	              { className: 'show-evaluate-text' },
-	              append
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'show-evaluate-time' },
-	              _util2.default.dateFormatGMT(appendDate, 'yyyy-MM-dd')
-	            )
-	          )
-	        ) : null
-	      );
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'show-evaluate-item' },
-	        this.renderHeader(),
-	        this.renderBody()
-	      );
-	    }
-	  }]);
-	  return EvaluateItem;
-	}(_react.Component); /*
-	                      * @Author: saohui 
-	                      * @Date: 2017-10-17 11:12:26 
-	                      * @Last Modified by:   saohui 
-	                      * @Last Modified time: 2017-10-17 11:12:26 
-	                      */
-
-	EvaluateItem.propTypes = {
-	  data: _react.PropTypes.object,
-	  isShowAppend: _react.PropTypes.bool,
-	  isEvalDataLineLt2: _react.PropTypes.bool
-	};
-	exports.default = EvaluateItem;
-
-/***/ }),
-/* 324 */
-/***/ (function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 325 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends2 = __webpack_require__(315);
-
-	var _extends3 = _interopRequireDefault(_extends2);
-
-	var _getPrototypeOf = __webpack_require__(2);
-
-	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-	var _classCallCheck2 = __webpack_require__(28);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	var _createClass2 = __webpack_require__(29);
-
-	var _createClass3 = _interopRequireDefault(_createClass2);
-
-	var _possibleConstructorReturn2 = __webpack_require__(33);
-
-	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-	var _inherits2 = __webpack_require__(79);
-
-	var _inherits3 = _interopRequireDefault(_inherits2);
-
-	var _react = __webpack_require__(87);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _util = __webpack_require__(300);
-
-	var _util2 = _interopRequireDefault(_util);
-
-	__webpack_require__(326);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * 实现功能
-	 * 1. 标签渲染：组件的子元素进行传递标签
-	 *    <TagList>
-	 *     <div>第一个标签</div>
-	 *     <div disabled checked>第二个标签</div>
-	 *    </TagList>
-	 * 2. 子标签无论是何元素，最终渲染的时候将被 div 替换
-	 * 3. 传出选中：
-	 *  1) 选中状态使用 checked 来改变样式
-	 *  2) 不可选使用 disabled
-	 *  3) 可以直接采用 事件进行传递，会把传进行的事件进行全部注册
-	 * @export props = {
-	 *    showMore: true / false => 是否可以加载更多
-	 * }
-	 */
-	var TagList = function (_Component) {
-	  (0, _inherits3.default)(TagList, _Component);
-
-	  function TagList(props) {
-	    (0, _classCallCheck3.default)(this, TagList);
-
-	    var _this = (0, _possibleConstructorReturn3.default)(this, (TagList.__proto__ || (0, _getPrototypeOf2.default)(TagList)).call(this, props));
-
-	    _this.WRAPPER_HEIGHT = 76;
-
-
-	    _this.state = {
-	      isMore: true,
-	      needMore: null
-	    };
-	    return _this;
-	  }
-
-	  (0, _createClass3.default)(TagList, [{
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate() {
-	      if (this.state.needMore == null) {
-	        var needMore = true;
-	        if (this.refs.J_TagsWrapper.offsetHeight <= this.WRAPPER_HEIGHT) {
-	          needMore = false;
-	        }
-	        this.setState({
-	          needMore: needMore,
-	          isMore: false
-	        });
-	      }
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-
-	      var tabs = _util2.default.arrDeepFlattenL(this.props.children);
-	      var _state = this.state,
-	          isMore = _state.isMore,
-	          needMore = _state.needMore;
-	      var _props = this.props,
-	          showMore = _props.showMore,
-	          className = _props.className;
-
-
-	      var containerProps = (0, _extends3.default)({}, this.props, { className: 'tags-container ' + (className ? className : '')
-	      });
-	      delete containerProps.showMore;
-
-	      return _react2.default.createElement(
-	        'div',
-	        containerProps,
-	        _react2.default.createElement(
-	          'div',
-	          { ref: 'J_TagsWrapper', className: 'tags-wrapper', style: { maxHeight: isMore ? '' : this.WRAPPER_HEIGHT } },
-	          tabs && tabs.length > 0 ? tabs.map(function (item, key) {
-	            var props = item.props;
-	            var itemClassName = 'tag tag-blue ' + (props.checked ? 'tab-checked ' : '') + (props.disabled ? 'tab-disabled ' : '') + (props.className || '');
-	            return _react2.default.createElement('div', (0, _extends3.default)({
-	              key: key
-	            }, props, {
-	              className: itemClassName }));
-	          }) : null
-	        ),
-	        _react2.default.createElement('span', { className: 'tags-more', style: { display: !showMore || !needMore ? 'none' : 'block', transform: !isMore ? '' : 'rotate(180deg)' }, onClick: function onClick() {
-	            _this2.setState({
-	              isMore: !_this2.state.isMore
-	            });
-	          } })
-	      );
-	    }
-	  }]);
-	  return TagList;
-	}(_react.Component); /*
-	                      * @Author: saohui 
-	                      * @Date: 2017-10-17 11:12:49 
-	                      * @Last Modified by:   saohui 
-	                      * @Last Modified time: 2017-10-17 11:12:49 
-	                      */
-
-	TagList.propTypes = {
-	  showMore: _react.PropTypes.bool
-	};
-	exports.default = TagList;
-
-/***/ }),
-/* 326 */
-/***/ (function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

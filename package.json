@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/jun-lu/react-webpack-example.git"
   },
-  "author": "Jun.lu",
+  "author": "Saohui",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",

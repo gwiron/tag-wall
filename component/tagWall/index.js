@@ -2,7 +2,7 @@
  * @Author: saohui 
  * @Date: 2017-10-23 11:02:57 
  * @Last Modified by: saohui
- * @Last Modified time: 2017-10-24 19:29:51
+ * @Last Modified time: 2017-10-25 09:04:18
  */
 
 import Alert from '../alert'
@@ -36,7 +36,7 @@ export default class TagWall {
     this.color = '#fff'
     this.fontFamily = 'Arial'
     this.minFontSize = 30
-    this.maxFontSize = 60
+    this.maxFontSize = 69
 
 
 
@@ -92,14 +92,28 @@ export default class TagWall {
       text: text
     }
     
-    this.countPosition( ret, text )
+    let collisionNum = 0
+    , cheepFontSize = 0
+    while (1) {
+      this.countPosition( ret, text, cheepFontSize )
+      if ( !this.checkColl( ret )) {
+        break
+      }
+      collisionNum ++
+      cheepFontSize = collisionNum / 50
+      if ( collisionNum > 3000 ) {
+        return
+      }
+      // console.log( text ,' 碰撞了 ', collisionNum, cheepFontSize )
+    }
 
     this.tagList.push( ret )
   }
-  countPosition ( obj, text ) {
+  countPosition ( obj, text, cheepFontSize = 0 ) {
     const ctx = this.ctx
   
-    let fontSize = Math.floor( random( .9 ) * ( this.maxFontSize - this.minFontSize ) / 2 + this.minFontSize )
+    let fontSize = Math.floor( random( .9 ) * ( this.maxFontSize - this.minFontSize ) / 2 + this.minFontSize - cheepFontSize )
+    fontSize = Math.max( this.minFontSize, fontSize )
     
     ctx.font = fontSize +'px '+ this.fontFamily
     
@@ -108,11 +122,6 @@ export default class TagWall {
     obj.height = fontSize + this.tagPadding * 2
     obj.left = Math.floor( random() * ( this.width - obj.width ))
     obj.top = Math.floor( random() * ( this.height - obj.height ))
-
-    if ( this.checkColl( obj )) {
-      console.log('碰撞了')
-      this.countPosition( obj, text )
-    }
     
     return obj
   }
@@ -239,7 +248,7 @@ export default class TagWall {
     ctx.restore()
   }
   render ( body ) {
-    // console.log( this.tagList, JSON.stringify( this.tagList ) )
+    // console.log( this.tagList )
     const ctx = this.ctx
     ctx.clearRect( 0,0, this.wrapperWidth, this.wrapperHerght )
 

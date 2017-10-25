@@ -2,16 +2,24 @@
  * @Author: saohui 
  * @Date: 2017-10-24 19:24:32 
  * @Last Modified by: saohui
- * @Last Modified time: 2017-10-25 09:02:57
+ * @Last Modified time: 2017-10-25 10:58:14
  */
 import React from 'react'
 import DataCenter from '../module/DataCenter'
 import TagWall from '../component/tagWall'
 import { BlockLoading } from '../component/loading'
+import util from '../lib/util'
+
+import './index.less'
 
 export default class App extends React.Component {
 	constructor(props){
 		super(props)
+
+		const query = util.query()
+
+		this.name = query.name
+		this.birthday = query.birthday
 	}
   async componentDidMount () {
 		BlockLoading.show('正在生成专属 AI 宝宝...')
@@ -44,8 +52,13 @@ export default class App extends React.Component {
 	}
 
 	render(){
-		return <div ref="tag-body" className="tag-body">
-			<canvas ref='tag-wall'></canvas>
+		return <div className="index">
+			<div ref="tag-body" className="tag-body">
+				<canvas ref='tag-wall'></canvas>
+			</div>
+			<div className="induced-sharing">
+				<img src="https://front-images.oss-cn-hangzhou.aliyuncs.com/i4/dd36b724dbee02ec13e08643e972ca7f-1080-368.png" alt=""/>
+			</div>
 		</div>
 	}
 }

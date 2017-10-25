@@ -2,8 +2,9 @@
  * @Author: saohui 
  * @Date: 2017-10-23 11:02:57 
  * @Last Modified by: saohui
- * @Last Modified time: 2017-10-25 09:20:10
+ * @Last Modified time: 2017-10-25 10:46:44
  */
+import { stackBlurCanvasRGBA } from './StackBlur'
 
 import Alert from '../alert'
 import './index.less'
@@ -25,7 +26,7 @@ export default class TagWall {
 
     this.footerHeight = 140
     this.bgHeight = this.wrapperHerght - this.footerHeight
-    this.bgColor = 'rgba( 0,0,0, .5 )'
+    this.bgColor = 'rgba( 0,0,0, .2 )'
 
     this.boxPadding = 30
     this.width = this.wrapperWidth - this.boxPadding * 2
@@ -232,6 +233,7 @@ export default class TagWall {
     ctx.beginPath()
     // 背景绘制
     ctx.drawImage( logo.img, (this.wrapperWidth - this.bgHeight) / 2 , 0, this.bgHeight, this.bgHeight )
+    stackBlurCanvasRGBA( ctx, (this.wrapperWidth - this.bgHeight) / 2 , 0, this.bgHeight, this.bgHeight, 50 )
     ctx.fillStyle = this.bgColor
     ctx.fillRect( 0, 0, this.wrapperWidth, this.bgHeight )
 

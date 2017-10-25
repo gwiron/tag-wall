@@ -2,7 +2,7 @@
  * @Author: saohui 
  * @Date: 2017-10-23 11:02:57 
  * @Last Modified by: saohui
- * @Last Modified time: 2017-10-25 10:46:44
+ * @Last Modified time: 2017-10-25 16:37:18
  */
 import { stackBlurCanvasRGBA } from './StackBlur'
 

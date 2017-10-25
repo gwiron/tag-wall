@@ -2,7 +2,7 @@
  * @Author: saohui 
  * @Date: 2017-10-24 19:24:32 
  * @Last Modified by: saohui
- * @Last Modified time: 2017-10-25 10:58:14
+ * @Last Modified time: 2017-10-25 16:40:03
  */
 import React from 'react'
 import DataCenter from '../module/DataCenter'
@@ -25,6 +25,7 @@ export default class App extends React.Component {
 		BlockLoading.show('正在生成专属 AI 宝宝...')
 		let tag = new TagWall( this.refs['tag-wall'], 750, 890 )
 
+		// await tag.initLogo('https://front-images.oss-cn-hangzhou.aliyuncs.com/i4/ec3eacb6fa6bfae5e95973ee3c712818-144-144.png')
 		// await tag.initLogo('http://image.yuantutech.com/user/7b6fa819951ada163d0fff818af7e6fc-84-84.png')
 		// await tag.initQR('http://image.yuantutech.com/user/7b6fa819951ada163d0fff818af7e6fc-84-84.png')
 		// await tag.initLogo('http://uat.yuantutech.com/yuantu/omp-h5-cli/1.0.1/111.jpg')
